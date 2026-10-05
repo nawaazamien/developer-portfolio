@@ -17,7 +17,12 @@ export type ProjectCategory =
 
 export interface ImageAsset {
   src: string
+  /** Describes the image for people who cannot see it. Required. */
   alt: string
+  caption?: string
+  /** Intrinsic size in pixels; lets the browser reserve space. */
+  width: number
+  height: number
 }
 
 export interface CaseStudy {

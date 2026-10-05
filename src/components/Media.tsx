@@ -14,7 +14,15 @@ export function Media({ image, label, className = '' }: MediaProps) {
   return (
     <div className={`media ${className}`.trim()}>
       {image ? (
-        <img className="media__img" src={image.src} alt={image.alt} loading="lazy" />
+        <img
+          className="media__img"
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          loading="lazy"
+          decoding="async"
+        />
       ) : (
         <div className="media__empty" aria-hidden="true">
           {label && <span className="media__label">{label}</span>}

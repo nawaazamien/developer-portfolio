@@ -31,12 +31,15 @@ function LockIcon() {
 export function ProjectCard({ project, variant }: ProjectCardProps) {
   const repositoryUrl = getRepositoryUrl(project)
   const showHighlights = variant !== 'compact' && project.highlights.length > 0
+  const image = project.thumbnail ?? project.screenshots[0]
+  // Compact cards only get a media strip when a real image exists.
+  const showMedia = variant !== 'compact' || Boolean(image)
 
   return (
     <article className={`card project-card project-card--${variant}`}>
-      {variant !== 'compact' && (
+      {showMedia && (
         <Media
-          image={project.thumbnail ?? project.screenshots[0]}
+          image={image}
           label={project.name}
           className="project-card__media"
         />

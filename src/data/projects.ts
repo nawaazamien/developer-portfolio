@@ -1,12 +1,60 @@
-import type { Project } from './types'
+import tmtPipelineComparison from '../assets/projects/tiny-mobile-tower/pixel-pipeline-comparison.webp'
+import tmtPipelineGrid from '../assets/projects/tiny-mobile-tower/pixel-pipeline-grid.webp'
+import endlessHorde from '../assets/projects/tiny-swords-endless-survivor/horde.webp'
+import endlessLevelUp from '../assets/projects/tiny-swords-endless-survivor/level-up-cards.webp'
+import endlessNewThreat from '../assets/projects/tiny-swords-endless-survivor/new-threat.webp'
+import type { ImageAsset, Project } from './types'
 
 /*
  * Curated project data — the single source the UI reads from.
  *
  * All of these repositories are private, so none sets `repository`. Add a
- * `repository` only for a public repo. Screenshots arrive in a later media
- * pass; empty arrays render an intentional empty state.
+ * `repository` only for a public repo.
+ *
+ * Media lives in `src/assets/projects/<slug>/` as optimised, portfolio-safe
+ * copies of real in-engine captures. Projects without a safe capture keep an
+ * empty `screenshots` array and render the intentional empty state.
  */
+
+const endlessThreat: ImageAsset = {
+  src: endlessNewThreat,
+  alt: 'Tiny Swords — Endless Survivor: a squad of soldiers faces a horde of goblins as a "New Threat: Troll Brute" mini-boss banner and boss health bar appear.',
+  caption: 'Mini-boss introduction during a wave',
+  width: 920,
+  height: 540,
+}
+
+const endlessUpgrades: ImageAsset = {
+  src: endlessLevelUp,
+  alt: 'Tiny Swords — Endless Survivor level-up screen offering three upgrade cards: Heavy Blade (common), Death Frenzy (uncommon) and Explosive Arrow (rare).',
+  caption: 'Level-up upgrade choices',
+  width: 1160,
+  height: 456,
+}
+
+const endlessSwarm: ImageAsset = {
+  src: endlessHorde,
+  alt: 'Tiny Swords — Endless Survivor: a small squad of soldiers surrounded by a large swarm of goblin enemies on a grass field.',
+  caption: 'Large enemy counts on screen',
+  width: 1000,
+  height: 680,
+}
+
+const towerPipelineStrip: ImageAsset = {
+  src: tmtPipelineComparison,
+  alt: 'Tiny Mobile Tower: the same scene rendered at normal resolution and through the 640 by 360 pixel-resolution pipeline, showing a voxel-style castle tower on wheels with goblins around it.',
+  caption: 'Normal versus pixel-resolution rendering',
+  width: 960,
+  height: 360,
+}
+
+const towerPipelineGrid: ImageAsset = {
+  src: tmtPipelineGrid,
+  alt: 'Tiny Mobile Tower: four renders of the same scene at normal, 640 by 360, 480 by 270 and 320 by 180 pixel resolutions.',
+  caption: 'Pixel-resolution comparison at four render sizes',
+  width: 960,
+  height: 720,
+}
 
 export const projects: Project[] = [
   {
@@ -141,7 +189,8 @@ export const projects: Project[] = [
     featured: false,
     visibility: 'private',
     technologies: ['Godot 4', 'GDScript'],
-    screenshots: [],
+    thumbnail: towerPipelineStrip,
+    screenshots: [towerPipelineGrid],
     highlights: [],
     displayOrder: 6,
   },
@@ -173,7 +222,8 @@ export const projects: Project[] = [
     featured: false,
     visibility: 'private',
     technologies: ['Godot 4', 'GDScript'],
-    screenshots: [],
+    thumbnail: endlessThreat,
+    screenshots: [endlessThreat, endlessUpgrades, endlessSwarm],
     highlights: [],
     displayOrder: 8,
   },

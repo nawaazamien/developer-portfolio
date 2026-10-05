@@ -40,7 +40,7 @@ describe('validateProjects', () => {
 
   it('requires a featured project and valid images', () => {
     const problems = validateProjects([
-      { ...base, featured: false, screenshots: [{ src: '', alt: '' }] },
+      { ...base, featured: false, screenshots: [{ src: '', alt: '', width: 1, height: 1 }] },
     ])
     expect(problems.join()).toContain('No featured projects')
     expect(problems.join()).toContain('src and alt')

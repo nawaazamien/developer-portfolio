@@ -16,6 +16,10 @@
   filter: grayscale(0.2);
 }
 
+.project-card--compact .project-card__media {
+  height: 150px;
+}
+
 .project-card__body {
   display: flex;
   flex: 1;

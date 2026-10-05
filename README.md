@@ -49,12 +49,26 @@ Private projects can be shown without exposing source: repository links must be 
 
 All copy is factual: only verified details are published (GitHub link, role, education, location, real projects). Employer details are intentionally omitted, and no contact email, phone or other social links appear until verified ones exist. Add them in `src/data/profile.ts`; entries without an `href` are never rendered.
 
-Portrait and project screenshots are not supplied yet, so they render intentional empty tiles. Add images through the `image`, `thumbnail` and `screenshots` fields in `src/data`.
+No portrait has been supplied, so the hero shows the "NA" tile; most projects also render an intentional empty tile until a safe screenshot exists. Add images through `portrait` in `src/data/profile.ts` and `thumbnail` / `screenshots` in `src/data/projects.ts`.
 
 ### Content safeguards
 
 `npm test` validates the dataset (unique ids and slugs, at least one featured project, private projects carry no repository, https-only external links, images have alt text) and runs automatically before `npm run build`.
 
+## Media
+
+Project captures live in `src/assets/projects/<slug>/` as optimised WebP copies of real in-engine screenshots, imported by `src/data/projects.ts` (so Vite hashes them and applies the base path). Each image carries alt text, an optional caption and its dimensions. Projects without a safe capture keep an empty `screenshots` array and show the intentional empty tile. Never commit captures containing private data, credentials or customer information.
+
 ## Deployment
 
-Target: GitHub Pages via GitHub Actions (added in a later phase). The Vite `base` is intentionally unset: it depends on the final Pages URL (`/<repo>/` for a project site, `/` for a user site or custom domain) and must be set once that is confirmed. Asset links in `index.html` are relative to keep this simple.
+Target: GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`). On every push to `main` (or manually via *Run workflow*) it runs lint, tests and the build as a quality gate, then deploys `dist/`.
+
+**Base path.** `vite.config.ts` reads `VITE_BASE_PATH` and falls back to `/`, so local dev is unaffected. The workflow sets it from `actions/configure-pages`, which reports `/developer-portfolio` for the default project URL (`https://nawaazamien.github.io/developer-portfolio/`) and an empty path under a custom domain. Adding a custom domain therefore needs no code change: configure it in the repository's Pages settings and the next deploy builds with base `/`.
+
+**Preview the production base locally:**
+
+```powershell
+$env:VITE_BASE_PATH = "/developer-portfolio/"; npm run build; npm run preview
+```
+
+**One-time setup.** In *Settings → Pages*, set *Source* to **GitHub Actions**. GitHub Pages for a *private* repository requires a plan that supports it (Pro, Team or Enterprise); on a free plan the repository must be public, or the plan upgraded, before the deploy job can succeed.
