@@ -17,14 +17,14 @@ export const profile: Profile = {
   intro:
     'I build production-oriented web applications, SaaS products, backend systems, automation and interactive systems — end to end, from database to interface.',
   about: [
-    "I'm a software engineer with more than three years of professional experience, promoted from intern and associate-level work into a Software Engineer 1 role. I take features and systems from concept through to implementation across the stack.",
+    "I'm a software engineer with more than four years of professional experience, promoted from intern and associate-level work into a Software Engineer 1 role. I take features and systems from concept through to implementation across the stack.",
     'Outside work I build independent products under Anti Social Studios — from a multi-tenant accounting platform to research tooling and automation. I’m drawn to architecture, automation and technically difficult systems.',
   ],
   portrait: {
     src: portraitImage,
-    alt: 'Nawaaz Amien, wearing a grey blazer and standing in front of a brick wall.',
-    width: 505,
-    height: 505,
+    alt: 'Nawaaz Amien, wearing a black suit jacket, white shirt and dark tie, outdoors with trees behind him.',
+    width: 400,
+    height: 400,
   },
   location: 'Cape Town, South Africa',
 }
@@ -36,7 +36,7 @@ export const socialLinks: SocialLink[] = [
 export const facts: Fact[] = [
   { label: 'Name', value: profile.name },
   { label: 'Role', value: profile.roleLabel },
-  { label: 'Experience', value: '3+ years' },
+  { label: 'Experience', value: '4+ years' },
   { label: 'Location', value: profile.location },
   { label: 'Education', value: 'CPUT — ICT diplomas' },
   { label: 'Independent', value: 'Anti Social Studios' },

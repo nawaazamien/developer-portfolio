@@ -6,7 +6,7 @@ import type { EducationEntry, ExperienceEntry } from './types'
  */
 export const experience: ExperienceEntry[] = [
   {
-    period: '3+ years',
+    period: '4+ years',
     periodNote: 'Current employer',
     heading: 'Software Engineer 1',
     headingNote: 'Current level',
