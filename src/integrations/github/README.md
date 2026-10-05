@@ -1,12 +1,19 @@
 # GitHub integration seam
 
-Reserved for the future GitHub layer (not built in Phase 0).
+Reserved for the future GitHub layer (not built yet).
 
-Intended flow:
+## Curated vs GitHub-derived data
 
-1. A scheduled GitHub Actions workflow runs at **build time**, using a token held in repository secrets. No token ever reaches the browser.
-2. It fetches metadata (latest push, primary language, latest release, homepage URL) for the repositories named in `src/data/projects.ts`.
-3. It writes a static JSON snapshot of **publishable** fields only (see `RepositoryActivity`).
-4. The app loads that snapshot and passes each project through `enrichProject`. Curated data wins; activity only fills gaps.
+- **Curated** (`src/data/projects.ts`, type `Project`): descriptions, featured flag, category, screenshots, highlights, case studies, and the repository URL of *public* projects.
+- **GitHub-derived** (`RepositoryActivity`): last push, primary language, latest release, homepage URL.
 
-Private repositories are matched by the workflow but only non-identifying fields (never the URL) are written to the snapshot.
+`enrichProject` layers the second over the first. Curated values win; activity only fills gaps.
+
+## Intended flow
+
+1. A scheduled GitHub Actions workflow runs at **build time** with a token held in repository secrets. No token ever reaches the browser.
+2. The workflow holds the private `projectId → repository` mapping in its own config, not in the client bundle, and fetches metadata for each project.
+3. It writes a static JSON snapshot of publishable fields, keyed by `projectId`.
+4. The app loads the snapshot and passes each project through `enrichProject`.
+
+Private projects only ever receive non-identifying fields; repository URLs and release links are applied to public projects only.

@@ -1,4 +1,4 @@
-import { jobs, journey } from '../data/experience'
+import { education, experience } from '../data/experience'
 import { useReveal } from '../hooks/useReveal'
 import './Work.css'
 
@@ -17,34 +17,34 @@ export function Work() {
         Work
       </h2>
       <ol className="work__jobs">
-        {jobs.map((job) => (
-          <li key={`${job.company}-${job.dates}`} className="work__job">
+        {experience.map((entry) => (
+          <li key={entry.heading} className="work__job">
             <div className="work__cell">
-              <span className="work__dates">{job.dates}</span>
-              <span className="work__meta">{job.type}</span>
+              <span className="work__dates">{entry.period}</span>
+              <span className="work__meta">{entry.periodNote}</span>
             </div>
             <div className="work__cell">
-              <h3 className="work__company">{job.company}</h3>
-              <span className="work__meta">{job.place}</span>
+              <h3 className="work__company">{entry.heading}</h3>
+              <span className="work__meta">{entry.headingNote}</span>
             </div>
             <div className="work__cell work__cell--wide">
-              <span className="work__role">{job.role}</span>
-              <p className="work__body">{job.body}</p>
+              <span className="work__role">{entry.role}</span>
+              <p className="work__body">{entry.body}</p>
             </div>
           </li>
         ))}
       </ol>
 
-      <h3 className="subheading work__journey-title">Journey</h3>
-      <p className="work__journey-intro">
-        Two turning points that shaped how I work.
+      <h3 className="subheading work__education-title">Education</h3>
+      <p className="work__education-intro">
+        Studied at Cape Peninsula University of Technology.
       </p>
-      <ul className="work__journey">
-        {journey.map((milestone) => (
-          <li key={milestone.year} className="card work__milestone">
-            <span className="work__year">{milestone.year}</span>
-            <h4 className="work__milestone-title">[ {milestone.title} ]</h4>
-            <p>{milestone.body}</p>
+      <ul className="work__education">
+        {education.map((entry) => (
+          <li key={entry.qualification} className="card work__qualification">
+            <span className="work__level">{entry.qualification}</span>
+            <h4 className="work__qualification-title">[ {entry.field} ]</h4>
+            <p>{entry.institution}</p>
           </li>
         ))}
       </ul>

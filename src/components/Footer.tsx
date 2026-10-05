@@ -1,11 +1,13 @@
-import { profile } from '../data/profile'
+import { githubUrl, profile } from '../data/profile'
 import { useReveal } from '../hooks/useReveal'
 import './Footer.css'
+
+const COPYRIGHT_YEAR = new Date().getFullYear()
 
 const FOOTER_LINKS = [
   { href: '#home', label: 'Home' },
   { href: '#work', label: 'Work' },
-  { href: '#services', label: 'Services' },
+  { href: '#capabilities', label: 'What I build' },
   { href: '#projects', label: 'Projects' },
 ]
 
@@ -23,17 +25,26 @@ export function Footer() {
         <span className="footer__mark" aria-hidden="true">
           {profile.initials}
         </span>
-        <h2 id="contact-title">I am eager to connect with you and hear your thoughts.</h2>
-        <p>Have a project or role in mind? Send a note — I usually reply within a day.</p>
-        <a className="btn btn--primary footer__button" href={`mailto:${profile.email}`}>
-          Say hello
+        <h2 id="contact-title">Interested in my work? Take a look at my GitHub.</h2>
+        <p>
+          Most of my projects are in private repositories; this portfolio is
+          where I show what they are and how they are built.
+        </p>
+        <a
+          className="btn btn--primary footer__button"
+          href={githubUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          View GitHub
         </a>
       </div>
 
       <div className="footer__column">
-        <h3>Contact</h3>
-        <a href={`mailto:${profile.email}`}>{profile.email}</a>
-        <span>{profile.phone}</span>
+        <h3>Find me</h3>
+        <a href={githubUrl} target="_blank" rel="noreferrer">
+          github.com/nawaazamien
+        </a>
         <span>{profile.location}</span>
       </div>
 
@@ -47,8 +58,10 @@ export function Footer() {
       </nav>
 
       <div className="footer__legal">
-        <span>© 2026 {profile.name}</span>
-        <span>Designed &amp; built with care</span>
+        <span>
+          © {COPYRIGHT_YEAR} {profile.name}
+        </span>
+        <span>{profile.roleLabel} · {profile.location}</span>
       </div>
     </footer>
   )

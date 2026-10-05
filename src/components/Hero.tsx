@@ -3,20 +3,24 @@ import { Media } from './Media'
 import './Hero.css'
 
 export function Hero() {
-  const links = socialLinks.filter((link) => link.href)
+  const [roleLead, ...roleRest] = profile.roleLabel.split(' ')
 
   return (
     <section id="home" className="section hero" aria-labelledby="hero-title">
       <span className="circle hero__circle" aria-hidden="true" />
 
       <p className="hero__role">
-        <span className="hero__role-light">Software</span>
-        <span className="hero__role-bold">Engineer I</span>
+        <span className="hero__role-light">{roleLead}</span>
+        <span className="hero__role-bold">{roleRest.join(' ')}</span>
       </p>
 
       <div className="hero__body">
         <div className="hero__portrait">
-          <Media image={profile.portrait} className="hero__portrait-media" />
+          <Media
+            image={profile.portrait}
+            label={profile.initials}
+            className="hero__portrait-media"
+          />
           <div className="hero__fade" aria-hidden="true" />
         </div>
         <div className="hero__copy">
@@ -27,7 +31,7 @@ export function Hero() {
           <p className="hero__intro">{profile.intro}</p>
           <div className="hero__actions">
             <a className="btn btn--primary" href="#projects">
-              Portfolio
+              Projects
             </a>
             <a className="btn btn--outline" href="#about">
               About me
@@ -37,16 +41,15 @@ export function Hero() {
       </div>
 
       <ul className="hero__socials" aria-label="Social links">
-        {links.map((link) => (
+        {socialLinks.map((link) => (
           <li key={link.name}>
             <a
               className="hero__social"
               href={link.href}
               aria-label={link.name}
               title={link.name}
-              {...(link.href?.startsWith('http')
-                ? { target: '_blank', rel: 'noreferrer' }
-                : {})}
+              target="_blank"
+              rel="noreferrer"
             >
               {link.short}
             </a>

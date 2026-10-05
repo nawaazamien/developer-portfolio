@@ -53,87 +53,49 @@
   color: var(--color-text-inverse);
 }
 
-.projects__media {
-  height: clamp(240px, 40vw, 440px);
-  border-radius: var(--radius-md);
-  filter: grayscale(0.2);
+.projects__group-title {
+  margin: 40px 0 20px;
+  font: 600 22px var(--font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 
-.projects__detail {
+.projects__featured,
+.projects__additional {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-  gap: 24px;
-  align-items: start;
-  margin-top: 20px;
-}
-
-.projects__description {
-  max-width: 640px;
-  font: 400 13px / 1.7 var(--font-body);
-  color: var(--color-text-soft);
-}
-
-.projects__description b {
-  color: var(--color-text);
-}
-
-.projects__tags {
-  justify-content: flex-end;
-  max-width: 420px;
-}
-
-.projects__tag {
-  background: var(--color-surface-raised);
-}
-
-.projects__recognition-title {
-  margin: 72px 0 12px;
-}
-
-.projects__recognition-intro {
-  margin-bottom: 28px;
-  font: 400 13px var(--font-body);
-  color: var(--color-text-soft);
-}
-
-.projects__awards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   gap: 20px;
 }
 
-.projects__award {
+.projects__featured > li,
+.projects__additional > li {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  min-width: 0;
 }
 
-.projects__certificate {
-  height: 260px;
-  padding: 14px;
-  background: var(--color-text);
-  border-radius: var(--radius-md);
+.projects__featured > li > *,
+.projects__additional > li > * {
+  flex: 1;
 }
 
-.projects__certificate .media__empty {
-  background: #e6e6e6;
-  border-color: #d4d4d4;
+@media (min-width: 720px) {
+  .projects__featured,
+  .projects__additional {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .projects__lead {
+    grid-column: 1 / -1;
+  }
 }
 
-.projects__award h4 {
-  font: 700 14px var(--font-body);
-}
-
-.projects__award p {
-  font: 400 12px / 1.65 var(--font-body);
-  color: var(--color-text-soft);
+@media (min-width: 1000px) {
+  .projects__additional {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 720px) {
-  .projects__tags {
-    justify-content: flex-start;
-  }
-
   .projects__tagline {
     font-size: 22px;
   }

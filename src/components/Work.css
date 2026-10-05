@@ -58,12 +58,12 @@
   text-wrap: pretty;
 }
 
-.work__journey-title {
+.work__education-title {
   position: relative;
   margin: 64px 0 12px;
 }
 
-.work__journey-intro {
+.work__education-intro {
   position: relative;
   margin-bottom: 28px;
   max-width: 720px;
@@ -71,14 +71,14 @@
   color: var(--color-text-soft);
 }
 
-.work__journey {
+.work__education {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   gap: 20px;
 }
 
-.work__milestone {
+.work__qualification {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -86,15 +86,16 @@
   text-align: center;
 }
 
-.work__year {
-  font: 700 36px var(--font-display);
+.work__level {
+  font: 700 clamp(26px, 3vw, 36px) / 1.1 var(--font-display);
+  overflow-wrap: anywhere;
 }
 
-.work__milestone-title {
+.work__qualification-title {
   font: 700 13px var(--font-body);
 }
 
-.work__milestone p {
+.work__qualification p {
   font: 400 12px / 1.65 var(--font-body);
   color: var(--color-text-soft);
 }

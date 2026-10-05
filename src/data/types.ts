@@ -8,6 +8,13 @@ export type ProjectStatus =
 
 export type ProjectVisibility = 'public' | 'private'
 
+export type ProjectCategory =
+  | 'saas'
+  | 'full-stack'
+  | 'data-research'
+  | 'automation'
+  | 'interactive'
+
 export interface ImageAsset {
   src: string
   alt: string
@@ -19,21 +26,30 @@ export interface CaseStudy {
   architecture?: string
 }
 
+/**
+ * Curated project record. Everything here is written by hand; values that a
+ * GitHub sync can derive (last push, language, releases) live in
+ * `RepositoryActivity` and are layered on with `enrichProject`.
+ */
 export interface Project {
   id: string
   slug: string
   name: string
   shortDescription: string
   longDescription?: string
-  category: string
+  category: ProjectCategory
+  /** Free-text product type shown on the card, e.g. "Accounting SaaS". */
   projectType: string
   status: ProjectStatus
+  /** Overrides the default label for `status`, e.g. "Active research". */
+  statusLabel?: string
   featured: boolean
   visibility: ProjectVisibility
   technologies: string[]
   /**
-   * Source repository. Never read this directly in UI code — use
-   * `getRepositoryUrl` from `lib/projects`, which hides it for private projects.
+   * Public source repository only. Private projects must not set this —
+   * `validateProjects` enforces it — and UI code reads it through
+   * `getRepositoryUrl`.
    */
   repository?: { url: string }
   liveUrl?: string
@@ -43,6 +59,7 @@ export interface Project {
   startDate?: string
   completionDate?: string
   latestMilestone?: string
+  /** Short engineering points shown on featured cards. */
   highlights: string[]
   caseStudy?: CaseStudy
   displayOrder: number
@@ -51,8 +68,7 @@ export interface Project {
 export interface SocialLink {
   name: string
   short: string
-  /** Links without a URL are not rendered until one is supplied. */
-  href?: string
+  href: string
 }
 
 export interface Fact {
@@ -60,28 +76,30 @@ export interface Fact {
   value: string
 }
 
-export interface Capability {
+export interface SkillGroup {
   title: string
-  body: string
+  items: string[]
 }
 
-export interface Job {
-  dates: string
-  type: string
-  company: string
-  place: string
+export interface ExperienceEntry {
+  period: string
+  periodNote: string
+  heading: string
+  headingNote: string
   role: string
   body: string
 }
 
-export interface Milestone {
-  year: string
-  title: string
-  body: string
+export interface EducationEntry {
+  qualification: string
+  field: string
+  institution: string
 }
 
-export interface Service extends Capability {
+export interface Service {
   id: string
+  title: string
+  body: string
   tags: string[]
   image?: ImageAsset
 }
@@ -91,11 +109,6 @@ export interface Stat {
   label: string
 }
 
-export interface Award extends Capability {
-  id: string
-  image?: ImageAsset
-}
-
 export interface Profile {
   name: string
   firstName: string
@@ -103,9 +116,7 @@ export interface Profile {
   initials: string
   roleLabel: string
   intro: string
-  about: string
+  about: string[]
   portrait?: ImageAsset
-  email: string
-  phone: string
   location: string
 }

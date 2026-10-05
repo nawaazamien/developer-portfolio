@@ -1,43 +1,37 @@
-import type { Job, Milestone } from './types'
+import type { EducationEntry, ExperienceEntry } from './types'
 
-/* Placeholder copy transcribed from the approved Claude Design. */
-
-export const jobs: Job[] = [
+/*
+ * Employer details are deliberately not published here. Only facts that are
+ * safe and verified appear: level, progression and duration.
+ */
+export const experience: ExperienceEntry[] = [
   {
-    dates: '2023 — Present',
-    type: 'Full-time',
-    company: 'Northwind Labs',
-    place: 'Cape Town',
-    role: 'Software Engineer I',
-    body: 'Lead a four-person team building a B2B analytics platform; cut page load times by 40% and introduced a shared component library.',
+    period: '3+ years',
+    periodNote: 'Current employer',
+    heading: 'Software Engineer 1',
+    headingNote: 'Current level',
+    role: 'Full-stack product engineering',
+    body: 'Own features and systems from concept through implementation across the stack.',
   },
   {
-    dates: '2021 — 2023',
-    type: 'Full-time',
-    company: 'Parcel & Co',
-    place: 'Remote',
-    role: 'Full-stack Developer',
-    body: 'Built the customer-facing shipping app on React Native and the Node.js order service behind it.',
-  },
-  {
-    dates: '2019 — 2021',
-    type: 'Contract',
-    company: 'Studio Oak',
-    place: 'Hamburg',
-    role: 'Frontend Developer',
-    body: 'Delivered marketing sites and e-commerce storefronts for a dozen agency clients.',
+    period: 'Earlier',
+    periodNote: 'Progression',
+    heading: 'Intern / Associate',
+    headingNote: 'Software engineering',
+    role: 'Promoted to Software Engineer 1',
+    body: 'Progressed from intern and associate-level engineering work into a Software Engineer 1 role.',
   },
 ]
 
-export const journey: Milestone[] = [
+export const education: EducationEntry[] = [
   {
-    year: '2019',
-    title: 'First production app',
-    body: 'Shipped my first paid project — a booking app for a local studio — and never looked back.',
+    qualification: 'Advanced Diploma',
+    field: 'ICT',
+    institution: 'Cape Peninsula University of Technology (CPUT)',
   },
   {
-    year: '2024',
-    title: 'Software Engineer I',
-    body: 'Joined a product team full-time, shipping features across the stack.',
+    qualification: 'Postgraduate Diploma',
+    field: 'ICT',
+    institution: 'Cape Peninsula University of Technology (CPUT)',
   },
 ]

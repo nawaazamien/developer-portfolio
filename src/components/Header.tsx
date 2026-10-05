@@ -1,10 +1,10 @@
-import { profile } from '../data/profile'
+import { githubUrl, profile } from '../data/profile'
 import './Header.css'
 
 const NAV_LINKS = [
   { href: '#home', label: 'Home' },
   { href: '#work', label: 'Work' },
-  { href: '#services', label: 'Services' },
+  { href: '#capabilities', label: 'What I build' },
   { href: '#projects', label: 'Projects' },
   { href: '#contact', label: 'Contact' },
 ]
@@ -30,8 +30,13 @@ export function Header() {
             </li>
           ))}
           <li>
-            <a className="btn btn--primary header__cta" href="#contact">
-              Let's get in touch
+            <a
+              className="btn btn--primary header__cta"
+              href={githubUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              View GitHub
             </a>
           </li>
         </ul>

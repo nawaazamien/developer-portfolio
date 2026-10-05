@@ -16,6 +16,7 @@ npm run dev       # start the dev server
 npm run build     # type-check and produce a production build in dist/
 npm run preview   # serve the production build locally
 npm run lint      # lint with Oxlint
+npm test          # validate portfolio data (Vitest)
 ```
 
 Requires a current Node.js LTS.
@@ -24,11 +25,11 @@ Requires a current Node.js LTS.
 
 ```
 src/
-  components/     UI sections (Header, Hero, About, Work, Services, Projects, Footer) + Media
+  components/     UI sections (Header, Hero, About, Work, Capabilities, Projects, Footer), ProjectCard, Media
   data/           typed, centralised content (profile, experience, services, projects)
   hooks/          shared hooks (scroll-reveal)
   integrations/   future GitHub integration seam (see its README)
-  lib/            small data helpers (project selection, repository visibility rules)
+  lib/            small data helpers (project selection, labels, repository visibility rules, data validation)
   styles/         design tokens and base styles; component CSS sits beside its component
 ```
 
@@ -46,7 +47,13 @@ Private projects can be shown without exposing source: repository links must be 
 
 ### Content status
 
-Copy and figures are placeholders transcribed from the design (name, jobs, stats, contact details, project entries). Social links without a URL are hidden. Portrait, screenshots and certificates render neutral tiles until images are supplied via the `image` fields in `src/data`.
+All copy is factual: only verified details are published (GitHub link, role, education, location, real projects). Employer details are intentionally omitted, and no contact email, phone or other social links appear until verified ones exist. Add them in `src/data/profile.ts`; entries without an `href` are never rendered.
+
+Portrait and project screenshots are not supplied yet, so they render intentional empty tiles. Add images through the `image`, `thumbnail` and `screenshots` fields in `src/data`.
+
+### Content safeguards
+
+`npm test` validates the dataset (unique ids and slugs, at least one featured project, private projects carry no repository, https-only external links, images have alt text) and runs automatically before `npm run build`.
 
 ## Deployment
 

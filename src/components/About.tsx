@@ -16,7 +16,11 @@ export function About() {
         <h2 id="about-title" className="section__heading">
           About
         </h2>
-        <p className="about__text">{profile.about}</p>
+        {profile.about.map((paragraph) => (
+          <p key={paragraph} className="about__text">
+            {paragraph}
+          </p>
+        ))}
         <dl className="about__facts">
           {facts.map((fact) => (
             <div key={fact.label} className="about__fact">
@@ -27,10 +31,10 @@ export function About() {
         </dl>
       </div>
       <ul className="about__skills">
-        {skills.map((skill) => (
-          <li key={skill.title} className="card about__skill">
-            <h3>{skill.title}</h3>
-            <p>{skill.body}</p>
+        {skills.map((group) => (
+          <li key={group.title} className="card about__skill">
+            <h3>{group.title}</h3>
+            <p>{group.items.join(' · ')}</p>
           </li>
         ))}
       </ul>

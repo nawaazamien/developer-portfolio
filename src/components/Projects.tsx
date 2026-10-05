@@ -1,17 +1,29 @@
 import { useState } from 'react'
-import { awards } from '../data/services'
+import type { ProjectCategory } from '../data/types'
 import { useReveal } from '../hooks/useReveal'
-import { getFeaturedProjects } from '../lib/projects'
-import { Media } from './Media'
+import { CATEGORY_LABELS, getCategories, getProjects } from '../lib/projects'
+import { ProjectCard } from './ProjectCard'
 import './Projects.css'
 
-const featuredProjects = getFeaturedProjects()
+const allProjects = getProjects()
+const categories = getCategories(allProjects)
+
+type Filter = ProjectCategory | 'all'
 
 export function Projects() {
   const { ref, className } = useReveal<HTMLElement>()
-  const [activeId, setActiveId] = useState(featuredProjects[0]?.id)
-  const project =
-    featuredProjects.find((item) => item.id === activeId) ?? featuredProjects[0]
+  const [filter, setFilter] = useState<Filter>('all')
+
+  const visible = allProjects.filter(
+    (project) => filter === 'all' || project.category === filter,
+  )
+  const featured = visible.filter((project) => project.featured)
+  const additional = visible.filter((project) => !project.featured)
+
+  const tabs: { value: Filter; label: string }[] = [
+    { value: 'all', label: 'All' },
+    ...categories.map((value) => ({ value, label: CATEGORY_LABELS[value] })),
+  ]
 
   return (
     <section
@@ -25,64 +37,62 @@ export function Projects() {
           Projects
         </h2>
         <p className="projects__tagline">
-          User-centered development <b>enhances productivity</b> and drives
-          revenue growth
+          Substantial software, <b>actively in development</b> — built and
+          tested as real systems
         </p>
       </div>
 
-      {project && (
-        <>
-          <div className="projects__tabs" role="group" aria-label="Select a project">
-            {featuredProjects.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                className="projects__tab"
-                aria-pressed={item.id === project.id}
-                onClick={() => setActiveId(item.id)}
-              >
-                {item.name}
-              </button>
-            ))}
-          </div>
+      <div
+        className="projects__tabs"
+        role="group"
+        aria-label="Filter projects by category"
+      >
+        {tabs.map((tab) => (
+          <button
+            key={tab.value}
+            type="button"
+            className="projects__tab"
+            aria-pressed={filter === tab.value}
+            onClick={() => setFilter(tab.value)}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
 
-          <Media
-            image={project.thumbnail ?? project.screenshots[0]}
-            className="projects__media"
-          />
-
-          <div className="projects__detail" aria-live="polite">
-            <p className="projects__description">
-              <b>{project.name}</b> — {project.shortDescription}
-            </p>
-            <ul className="tag-list projects__tags" aria-label="Technologies">
-              {project.technologies.map((tech) => (
-                <li key={tech} className="tag projects__tag">
-                  {tech}
+      <div aria-live="polite">
+        {featured.length > 0 && (
+          <>
+            <h3 className="projects__group-title">Featured</h3>
+            <ul className="projects__featured">
+              {featured.map((project, index) => (
+                <li
+                  key={project.id}
+                  className={index === 0 ? 'projects__lead' : undefined}
+                >
+                  <ProjectCard
+                    project={project}
+                    variant={index === 0 ? 'lead' : 'standard'}
+                  />
                 </li>
               ))}
             </ul>
-          </div>
-        </>
-      )}
+          </>
+        )}
 
-      <h3 className="subheading projects__recognition-title">
-        Testimonials &amp; Recognitions
-      </h3>
-      <p className="projects__recognition-intro">
-        Certificates and awards collected along the way.
-      </p>
-      <ul className="projects__awards">
-        {awards.map((award) => (
-          <li key={award.id} className="projects__award">
-            <div className="projects__certificate">
-              <Media image={award.image} />
-            </div>
-            <h4>{award.title}</h4>
-            <p>{award.body}</p>
-          </li>
-        ))}
-      </ul>
+        {additional.length > 0 && (
+          <>
+            <h3 className="projects__group-title">More projects</h3>
+            <ul className="projects__additional">
+              {additional.map((project) => (
+                <li key={project.id}>
+                  <ProjectCard project={project} variant="compact" />
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </div>
     </section>
   )
 }
