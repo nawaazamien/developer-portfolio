@@ -31,3 +31,8 @@
   color: rgba(255, 255, 255, 0.14);
   overflow-wrap: anywhere;
 }
+
+.media__img[data-fit='contain'] {
+  object-fit: contain;
+  background: #121212;
+}

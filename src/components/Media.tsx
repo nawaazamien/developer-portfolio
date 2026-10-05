@@ -20,6 +20,7 @@ export function Media({ image, label, priority = false, className = '' }: MediaP
           className="media__img"
           src={image.src}
           alt={image.alt}
+          data-fit={image.fit}
           width={image.width}
           height={image.height}
           loading={priority ? 'eager' : 'lazy'}

@@ -104,6 +104,7 @@ const traderFunnel: ImageAsset = {
   src: traderFunnelImage,
   alt: 'Instrument universe screening: 1,992 symbols in a broker census, 72 data-eligible after history and cost checks, and 15 cost-eligible symbols across 14 markets after measuring costs from 1.35 billion quote ticks.',
   caption: 'Instrument universe screening (figures from the project’s own reports)',
+  fit: 'contain',
   width: 1200,
   height: 470,
 }
@@ -128,6 +129,7 @@ const youtubeOverview: ImageAsset = {
   src: youtubePipelineOverview,
   alt: 'Six pipeline stages from long-form video to verified clip candidates: ingest, transcribe, segment, scout and direct with a local model, verify, and plan with render checks. A note says there is no upload or publishing step.',
   caption: 'Pipeline overview',
+  fit: 'contain',
   width: 1200,
   height: 470,
 }
@@ -152,6 +154,7 @@ const dominoesOverviewImage: ImageAsset = {
   src: dominoesOverview,
   alt: 'Server-authoritative match flow: a React client sends intent to a Worker, which routes to a Durable Object match room that runs a deterministic rules engine, commits state atomically and sends each player a redacted view.',
   caption: 'Server-authoritative match flow',
+  fit: 'contain',
   width: 1200,
   height: 470,
 }

@@ -22,6 +22,8 @@ export interface ImageAsset {
   /** Describes the image for people who cannot see it. Required. */
   alt: string
   caption?: string
+  /** `contain` shows diagrams whole instead of cropping them to the slot. */
+  fit?: 'cover' | 'contain'
   /** Intrinsic size in pixels; lets the browser reserve space. */
   width: number
   height: number
