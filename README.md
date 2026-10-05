@@ -53,7 +53,7 @@ A `Project` (see `src/data/types.ts`) carries category, status, visibility, tech
 
 ### Public links and contact
 
-`src/data/links.ts` is the single home for the canonical public URLs (GitHub, this site, SaaS Foundation and its demo, case-study URLs) and for the one public contact address, which is already shown on the GitHub profile. The address is rendered in the footer only and is kept out of structured data and page metadata. SaaS Foundation is the only project that sets a repository and live URL, and its card is marked "Public source".
+`src/data/links.ts` is the single home for the canonical public URLs (GitHub, this site, SaaS Foundation and its demo, case-study URLs) and for the one public contact address, which is already shown on the GitHub profile. The address is rendered in the footer only and is kept out of structured data and page metadata. The recruiter CV is `public/Nawaaz-Amien-Software-Engineer-CV.pdf`, linked from the footer through the Vite base path and deliberately kept out of the sitemap and structured data. It is the public version, without a phone number. Replace the file in place to update it; the filename never changes. SaaS Foundation is the only project that sets a repository and live URL, and its card is marked "Public source".
 
 ### Private projects
 

@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { contactEmail, contactHref, publicLinks } from '../data/links'
+import { contactEmail, contactHref, cvFileName, publicLinks } from '../data/links'
 import { githubUrl, portfolioSourceUrl, profile } from '../data/profile'
 import { useReveal } from '../hooks/useReveal'
 import './Footer.css'
@@ -41,6 +41,13 @@ export function Footer() {
             rel="noreferrer"
           >
             View GitHub
+          </a>
+          <a
+            className="btn btn--outline footer__button"
+            href={`${import.meta.env.BASE_URL}${cvFileName}`}
+            download={cvFileName}
+          >
+            Download CV
           </a>
           <a className="btn btn--outline footer__button" href={contactHref}>
             Email me

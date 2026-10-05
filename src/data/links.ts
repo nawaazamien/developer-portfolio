@@ -23,6 +23,13 @@ export const publicLinks = {
 export const caseStudyUrl = (slug: string): string => `${portfolio}projects/${slug}/`
 
 /**
+ * The recruiter CV is a static file in public/. Keeping the filename stable
+ * means links in applications keep working when the PDF is replaced.
+ */
+export const cvFileName = 'Nawaaz-Amien-Software-Engineer-CV.pdf'
+export const cvUrl = `${portfolio}${cvFileName}`
+
+/**
  * The public contact address. It is already shown on the GitHub profile, so
  * using it here adds no new disclosure, but it does add another place a
  * scraper can find it. It is kept out of structured data and rendered in one
