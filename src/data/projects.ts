@@ -1,8 +1,13 @@
+import castleHoldCourtyard from '../assets/projects/castle-hold/courtyard-defence.webp'
+import kingdomForestLedger from '../assets/projects/kingdom-incremental/forest-and-ledger.webp'
 import tmtPipelineComparison from '../assets/projects/tiny-mobile-tower/pixel-pipeline-comparison.webp'
 import tmtPipelineGrid from '../assets/projects/tiny-mobile-tower/pixel-pipeline-grid.webp'
 import endlessHorde from '../assets/projects/tiny-swords-endless-survivor/horde.webp'
 import endlessLevelUp from '../assets/projects/tiny-swords-endless-survivor/level-up-cards.webp'
 import endlessNewThreat from '../assets/projects/tiny-swords-endless-survivor/new-threat.webp'
+import warmupPrepare from '../assets/projects/warmup/prepare-tournament.webp'
+import warmupRunner from '../assets/projects/warmup/live-runner-and-standings.webp'
+import warmupRunnerWide from '../assets/projects/warmup/live-runner-and-standings-wide.webp'
 import type { ImageAsset, Project } from './types'
 
 /*
@@ -38,6 +43,46 @@ const endlessSwarm: ImageAsset = {
   caption: 'Large enemy counts on screen',
   width: 1000,
   height: 680,
+}
+
+const warmupRunnerStrip: ImageAsset = {
+  src: warmupRunnerWide,
+  alt: 'Warmup: the live tournament screen showing two court results in an Americano tournament, next to the standings tab ranking eight players by points.',
+  caption: 'Live runner and standings (sample players)',
+  width: 1200,
+  height: 532,
+}
+
+const warmupRunnerFull: ImageAsset = {
+  src: warmupRunner,
+  alt: 'Warmup on a phone: round 3 of 7 with both court results entered and a Next Round button, beside the standings tab listing eight sample players ranked by points.',
+  caption: 'Live runner and standings (sample players)',
+  width: 1200,
+  height: 750,
+}
+
+const warmupSetup: ImageAsset = {
+  src: warmupPrepare,
+  alt: 'Warmup tournament preparation screen showing format, player count, courts, points per match, number of rounds, team mode and court rotation options.',
+  caption: 'Tournament preparation',
+  width: 430,
+  height: 820,
+}
+
+const kingdomScreens: ImageAsset = {
+  src: kingdomForestLedger,
+  alt: 'Kingdom Incremental: the forest estate with a lumberjack working inside a fenced grove, next to the Forest Ledger panel listing a Timber Empire goal and priced upgrades such as Axe Quality and Work Boots.',
+  caption: 'Forest estate and upgrade ledger',
+  width: 1120,
+  height: 720,
+}
+
+const castleHoldCourtyardImage: ImageAsset = {
+  src: castleHoldCourtyard,
+  alt: 'Castle Hold: a castle at the centre of a circular courtyard with four defensive squads positioned around it while enemies approach from the north.',
+  caption: 'Squads defending the castle courtyard',
+  width: 500,
+  height: 430,
 }
 
 const towerPipelineStrip: ImageAsset = {
@@ -169,7 +214,8 @@ export const projects: Project[] = [
     featured: true,
     visibility: 'private',
     technologies: ['React', 'TypeScript', 'Vite', 'Dexie', 'PWA'],
-    screenshots: [],
+    thumbnail: warmupRunnerStrip,
+    screenshots: [warmupRunnerFull, warmupSetup],
     highlights: [
       'Tournament engines with player scheduling and fairness logic',
       'Live tournament runner with standings and session state',
@@ -206,7 +252,8 @@ export const projects: Project[] = [
     featured: false,
     visibility: 'private',
     technologies: ['Godot 4', 'GDScript'],
-    screenshots: [],
+    thumbnail: kingdomScreens,
+    screenshots: [kingdomScreens],
     highlights: [],
     displayOrder: 7,
   },
@@ -239,7 +286,8 @@ export const projects: Project[] = [
     featured: false,
     visibility: 'private',
     technologies: ['Godot 4', 'GDScript'],
-    screenshots: [],
+    thumbnail: castleHoldCourtyardImage,
+    screenshots: [castleHoldCourtyardImage],
     highlights: [],
     displayOrder: 9,
   },

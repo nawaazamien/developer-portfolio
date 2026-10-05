@@ -2,6 +2,9 @@ import type { Fact, Profile, SkillGroup, SocialLink } from './types'
 
 export const githubUrl = 'https://github.com/nawaazamien'
 
+/** This site's own source — the only repository on the portfolio that is public. */
+export const portfolioSourceUrl = `${githubUrl}/developer-portfolio`
+
 export const profile: Profile = {
   name: 'Nawaaz Amien',
   firstName: 'Nawaaz',

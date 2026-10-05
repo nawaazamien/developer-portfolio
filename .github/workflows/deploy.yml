@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   build:
-    name: Quality gate and build
+    name: Validate and build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -29,17 +29,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Quality gate: nothing Pages-specific runs until these all pass.
       - name: Lint
         run: npm run lint
 
       - name: Test
         run: npm test
 
+      - name: Typecheck and build
+        run: npm run build
+
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v6
 
-      - name: Build
+      - name: Build for Pages
         run: npm run build
         env:
           # Pages reports "/developer-portfolio" for a project site and "" for a

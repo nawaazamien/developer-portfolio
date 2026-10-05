@@ -16,8 +16,12 @@
   filter: grayscale(0.2);
 }
 
+.project-card--standard .project-card__media {
+  height: 220px;
+}
+
 .project-card--compact .project-card__media {
-  height: 150px;
+  height: 190px;
 }
 
 .project-card__body {

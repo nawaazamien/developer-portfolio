@@ -1,4 +1,4 @@
-import { githubUrl, profile } from '../data/profile'
+import { githubUrl, portfolioSourceUrl, profile } from '../data/profile'
 import { useReveal } from '../hooks/useReveal'
 import './Footer.css'
 
@@ -44,6 +44,9 @@ export function Footer() {
         <h3>Find me</h3>
         <a href={githubUrl} target="_blank" rel="noreferrer">
           github.com/nawaazamien
+        </a>
+        <a href={portfolioSourceUrl} target="_blank" rel="noreferrer">
+          Source of this site
         </a>
         <span>{profile.location}</span>
       </div>
