@@ -33,6 +33,16 @@ export const PROJECT_PAGES = [
     applicationCategory: 'FinanceApplication',
   },
   {
+    slug: 'saas-foundation',
+    name: 'SaaS Foundation',
+    description:
+      'Public multi-tenant SaaS reference: React, strict TypeScript and PostgreSQL Row Level Security with role-based access, tested on real PostgreSQL 17.',
+    tagline: 'Public multi-tenant SaaS reference',
+    category: 'SaaS',
+    schemaType: 'SoftwareApplication',
+    applicationCategory: 'BusinessApplication',
+  },
+  {
     slug: 'anti-social-trader',
     name: 'Anti Social Trader',
     description:

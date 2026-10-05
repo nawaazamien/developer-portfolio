@@ -3,6 +3,9 @@ import financeDashboard from '../assets/projects/anti-social-finance/dashboard.w
 import financeTransactions from '../assets/projects/anti-social-finance/transactions.webp'
 import petDashboard from '../assets/projects/pet-platform/dashboard.webp'
 import petDashboardWide from '../assets/projects/pet-platform/dashboard-wide.webp'
+import saasOwnerProjects from '../assets/projects/saas-foundation/projects-owner.webp'
+import saasRoleMatrix from '../assets/projects/saas-foundation/role-matrix.webp'
+import saasViewerProjects from '../assets/projects/saas-foundation/projects-viewer.webp'
 import dominoesCommandPipeline from '../assets/projects/dominoes/command-pipeline.webp'
 import dominoesLocalPlay from '../assets/projects/dominoes/local-pass-and-play.webp'
 import dominoesOverview from '../assets/projects/dominoes/platform-overview.webp'
@@ -23,13 +26,15 @@ import endlessNewThreat from '../assets/projects/tiny-swords-endless-survivor/ne
 import warmupPrepare from '../assets/projects/warmup/prepare-tournament.webp'
 import warmupRunner from '../assets/projects/warmup/live-runner-and-standings.webp'
 import warmupRunnerWide from '../assets/projects/warmup/live-runner-and-standings-wide.webp'
+import { publicLinks } from './links'
 import type { ImageAsset, Project } from './types'
 
 /*
  * Curated project data — the single source the UI reads from.
  *
- * All of these repositories are private, so none sets `repository`. Add a
- * `repository` only for a public repo.
+ * Every repository is private except SaaS Foundation, which is public and is
+ * the only project that sets `repository`. Add a `repository` only for a
+ * public repo.
  *
  * Media lives in `src/assets/projects/<slug>/` as optimised, portfolio-safe
  * copies of real in-engine captures. Projects without a safe capture keep an
@@ -239,6 +244,30 @@ const towerPipelineGrid: ImageAsset = {
   height: 720,
 }
 
+const saasOwnerImage: ImageAsset = {
+  src: saasOwnerProjects,
+  alt: 'SaaS Foundation demo signed in as an owner of the fictional organisation Northstar Labs: a project list with status badges, a New project button, and Edit and Delete actions on every row.',
+  caption: 'Owner view: full project controls (demo mode, fictional data)',
+  width: 1200,
+  height: 760,
+}
+
+const saasViewerImage: ImageAsset = {
+  src: saasViewerProjects,
+  alt: 'SaaS Foundation demo after switching to the fictional organisation Atlas Studio, where the same user is only a viewer: projects are listed with a read-only notice and no create, edit or delete controls.',
+  caption: 'Same user as a viewer in another organisation (demo mode)',
+  width: 1200,
+  height: 760,
+}
+
+const saasMatrixImage: ImageAsset = {
+  src: saasRoleMatrix,
+  alt: 'SaaS Foundation settings page with a table of which of the owner, admin, member and viewer roles can view, create, edit and delete projects, manage members and rename the organisation.',
+  caption: 'Role capability matrix',
+  width: 1200,
+  height: 793,
+}
+
 export const projects: Project[] = [
   {
     id: 'anti-social-finance',
@@ -262,6 +291,31 @@ export const projects: Project[] = [
       'FNB CSV/XLSX import, Profit & Loss and Balance Sheet reporting, backed by extensive automated, database and concurrency testing',
     ],
     displayOrder: 1,
+  },
+  {
+    id: 'saas-foundation',
+    slug: 'saas-foundation',
+    name: 'SaaS Foundation',
+    shortDescription:
+      'A public reference implementation of a multi-tenant SaaS: React and strict TypeScript over PostgreSQL Row Level Security, with role-based access, typed backend adapters and policy tests that run on real PostgreSQL.',
+    longDescription:
+      'Four tables, four roles and one tenant-scoped resource, kept deliberately small so every authorisation rule can be read and tested. A Supabase adapter and an in-memory demo adapter implement the same typed backend contract.',
+    category: 'saas',
+    projectType: 'Public engineering reference project',
+    status: 'completed',
+    featured: true,
+    visibility: 'public',
+    repository: { url: publicLinks.saasFoundation.repository },
+    liveUrl: publicLinks.saasFoundation.demo,
+    technologies: ['React', 'TypeScript', 'Vite', 'Supabase', 'PostgreSQL', 'Vitest'],
+    thumbnail: saasOwnerImage,
+    screenshots: [saasOwnerImage, saasViewerImage, saasMatrixImage],
+    highlights: [
+      'Tenant isolation and role rules enforced by Row Level Security, with 28 policy tests run against real PostgreSQL 17',
+      'One typed backend contract implemented by a Supabase adapter and a deterministic in-memory demo adapter',
+      'Public source, live demo, CI-gated deployment, and architecture and security documentation',
+    ],
+    displayOrder: 2,
   },
   {
     id: 'anti-social-trader',
@@ -291,7 +345,7 @@ export const projects: Project[] = [
       'Event-driven backtesting with transaction-cost modelling',
       'Preregistered, reproducible research on a strictly typed Python codebase',
     ],
-    displayOrder: 2,
+    displayOrder: 3,
   },
   {
     id: 'pet-platform',
@@ -314,7 +368,7 @@ export const projects: Project[] = [
       'Pet domain model with visibility, status, media and public listings',
       'Enquiry, customer and application records with notification and email-template architecture',
     ],
-    displayOrder: 3,
+    displayOrder: 4,
   },
   {
     id: 'youtube-automation',
@@ -326,7 +380,7 @@ export const projects: Project[] = [
     projectType: 'Video automation pipeline',
     status: 'active',
     statusLabel: 'Prototype',
-    featured: true,
+    featured: false,
     visibility: 'private',
     technologies: [
       'Python',
@@ -344,7 +398,7 @@ export const projects: Project[] = [
       'Content-unit detection and candidate clipping with local LLMs',
       'Edit planning for DaVinci Resolve with deterministic render validation',
     ],
-    displayOrder: 4,
+    displayOrder: 6,
   },
   {
     id: 'warmup',
@@ -382,7 +436,7 @@ export const projects: Project[] = [
     thumbnail: towerPipelineStrip,
     screenshots: [towerPipelineGrid],
     highlights: [],
-    displayOrder: 6,
+    displayOrder: 7,
   },
   {
     id: 'kingdom-incremental',
@@ -399,7 +453,7 @@ export const projects: Project[] = [
     thumbnail: kingdomScreens,
     screenshots: [kingdomScreens],
     highlights: [],
-    displayOrder: 7,
+    displayOrder: 8,
   },
   {
     id: 'tiny-swords-endless-survivor',
@@ -416,7 +470,7 @@ export const projects: Project[] = [
     thumbnail: endlessThreat,
     screenshots: [endlessThreat, endlessUpgrades, endlessSwarm],
     highlights: [],
-    displayOrder: 8,
+    displayOrder: 9,
   },
   {
     id: 'castle-hold',
@@ -433,7 +487,7 @@ export const projects: Project[] = [
     thumbnail: castleHoldCourtyardImage,
     screenshots: [castleHoldCourtyardImage],
     highlights: [],
-    displayOrder: 9,
+    displayOrder: 10,
   },
   {
     id: 'dominoes',
@@ -458,6 +512,6 @@ export const projects: Project[] = [
     thumbnail: dominoesOverviewImage,
     screenshots: [dominoesOverviewImage, dominoesPipelineImage, dominoesRewardImage, dominoesLocalImage],
     highlights: [],
-    displayOrder: 10,
+    displayOrder: 11,
   },
 ]

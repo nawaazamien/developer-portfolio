@@ -1,4 +1,5 @@
 import { Link } from 'react-router'
+import { contactEmail, contactHref, publicLinks } from '../data/links'
 import { githubUrl, portfolioSourceUrl, profile } from '../data/profile'
 import { useReveal } from '../hooks/useReveal'
 import './Footer.css'
@@ -28,17 +29,23 @@ export function Footer() {
         </span>
         <h2 id="contact-title">Interested in my work? Take a look at my GitHub.</h2>
         <p>
-          Most of my projects are in private repositories; this portfolio is
-          where I show what they are and how they are built.
+          Most of my projects are in private repositories, so this portfolio
+          shows what they are and how they are built. SaaS Foundation and this
+          site are public source.
         </p>
-        <a
-          className="btn btn--primary footer__button"
-          href={githubUrl}
-          target="_blank"
-          rel="noreferrer"
-        >
-          View GitHub
-        </a>
+        <div className="footer__actions">
+          <a
+            className="btn btn--primary footer__button"
+            href={githubUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            View GitHub
+          </a>
+          <a className="btn btn--outline footer__button" href={contactHref}>
+            Email me
+          </a>
+        </div>
       </div>
 
       <div className="footer__column">
@@ -46,9 +53,16 @@ export function Footer() {
         <a href={githubUrl} target="_blank" rel="noreferrer">
           github.com/nawaazamien
         </a>
+        <a href={publicLinks.saasFoundation.repository} target="_blank" rel="noreferrer">
+          Code sample: SaaS Foundation
+        </a>
+        <a href={publicLinks.saasFoundation.demo} target="_blank" rel="noreferrer">
+          SaaS Foundation live demo
+        </a>
         <a href={portfolioSourceUrl} target="_blank" rel="noreferrer">
           Source of this site
         </a>
+        <a href={contactHref}>{contactEmail}</a>
         <span>{profile.location}</span>
       </div>
 

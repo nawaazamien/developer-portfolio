@@ -48,6 +48,7 @@ export function ProjectCard({ project, variant }: ProjectCardProps) {
       <div className="project-card__body">
         <div className="project-card__meta">
           <span className="project-card__status">{getStatusLabel(project)}</span>
+          {repositoryUrl && <span className="project-card__public">Public source</span>}
           <span className="project-card__category">
             {CATEGORY_LABELS[project.category]}
           </span>
@@ -99,7 +100,7 @@ export function ProjectCard({ project, variant }: ProjectCardProps) {
               target="_blank"
               rel="noreferrer"
             >
-              Live site
+              Live demo
             </a>
           )}
         </div>

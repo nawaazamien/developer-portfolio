@@ -63,6 +63,14 @@
   background: var(--color-text);
 }
 
+.case__public {
+  padding: 3px 9px;
+  border-radius: var(--radius-xs);
+  background: var(--color-text);
+  color: var(--color-text-inverse);
+  font-weight: 700;
+}
+
 .case__title {
   font: 700 clamp(36px, 6vw, 64px) / 1.05 var(--font-display);
   letter-spacing: 0.04em;

@@ -10,6 +10,7 @@ import {
   tinySwordsEndlessSurvivor,
 } from './games'
 import { petPlatform } from './pet-platform'
+import { saasFoundation } from './saas-foundation'
 import { warmup } from './warmup'
 import { youtubeAutomation } from './youtube-automation'
 
@@ -19,6 +20,7 @@ import { youtubeAutomation } from './youtube-automation'
  */
 export const caseStudies: Record<ProjectSlug, CaseStudy> = {
   'anti-social-finance': antiSocialFinance,
+  'saas-foundation': saasFoundation,
   'anti-social-trader': antiSocialTrader,
   'pet-platform': petPlatform,
   'youtube-automation': youtubeAutomation,

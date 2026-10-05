@@ -1,11 +1,12 @@
 import portraitImage from '../assets/portrait/nawaaz-amien.webp'
 import { identity } from './identity'
+import { publicLinks } from './links'
 import type { Fact, Profile, SkillGroup, SocialLink } from './types'
 
 export const githubUrl = identity.githubUrl
 
-/** This site's own source — the only repository on the portfolio that is public. */
-export const portfolioSourceUrl = `${githubUrl}/developer-portfolio`
+/** This site's own source, one of two public repositories shown on the portfolio. */
+export const portfolioSourceUrl = publicLinks.portfolioSource
 
 export const profile: Profile = {
   name: 'Nawaaz Amien',

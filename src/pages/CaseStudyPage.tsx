@@ -96,6 +96,7 @@ function CaseStudyView({ project, study, previous, next }: CaseStudyViewProps) {
       <header className="case__header">
         <p className="case__eyebrow">
           <span className="case__status">{getStatusLabel(project)}</span>
+          {repositoryUrl && <span className="case__public">Public source</span>}
           <span>{CATEGORY_LABELS[project.category]}</span>
           <span>{project.projectType}</span>
         </p>
@@ -272,7 +273,7 @@ function CaseStudyView({ project, study, previous, next }: CaseStudyViewProps) {
                 <dt>Live</dt>
                 <dd>
                   <a href={project.liveUrl} target="_blank" rel="noreferrer">
-                    Open site
+                    Open live demo
                   </a>
                 </dd>
               </div>

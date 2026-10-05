@@ -51,6 +51,10 @@ GitHub Pages has no SPA rewrites, so the build emits real files: a copy of `inde
 
 A `Project` (see `src/data/types.ts`) carries category, status, visibility, technologies, highlights, media (`thumbnail`, `screenshots` with alt text, caption and dimensions) and a display order. Its case study — overview, problem, features, architecture diagram, challenges, decisions, testing and status — is structured data in `src/data/caseStudies`, rendered by one reusable page. Curated fields are kept separate from fields a GitHub sync can derive later (last push, language, releases), which are layered on by `enrichProject` in `src/integrations/github`.
 
+### Public links and contact
+
+`src/data/links.ts` is the single home for the canonical public URLs (GitHub, this site, SaaS Foundation and its demo, case-study URLs) and for the one public contact address, which is already shown on the GitHub profile. The address is rendered in the footer only and is kept out of structured data and page metadata. SaaS Foundation is the only project that sets a repository and live URL, and its card is marked "Public source".
+
 ### Private projects
 
 A private project shows its description, stack, status and screenshots with a "Private repository" badge and **no source link**. Repository links are read only through `getRepositoryUrl`, which returns nothing for private projects, and `npm test` fails if a private project carries a repository URL. The future GitHub sync is designed to run at build time with a secret held in Actions, keyed by project id so private repository names never reach the client bundle.

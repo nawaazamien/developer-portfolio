@@ -33,6 +33,12 @@
   color: var(--color-text-soft);
 }
 
+.footer__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .footer__button {
   align-self: flex-start;
 }

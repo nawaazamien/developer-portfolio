@@ -60,6 +60,16 @@
   background: var(--color-text);
 }
 
+.project-card__public {
+  padding: 3px 9px;
+  border-radius: var(--radius-xs);
+  background: var(--color-text);
+  color: var(--color-text-inverse);
+  font: 700 10px var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .project-card__category {
   font: 600 11px var(--font-body);
   color: var(--color-text-faint);

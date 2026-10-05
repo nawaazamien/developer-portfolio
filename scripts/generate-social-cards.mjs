@@ -3,7 +3,8 @@
  *
  * The cards are branded designs, not product screenshots. Where a project has
  * a real image it is shown as a small framed inset; otherwise the card is
- * type only. Run with `npm run social-cards` (needs Chrome installed).
+ * type only. Run with `npm run social-cards` (needs Chrome installed). Pass card names to
+ * regenerate only those, e.g. `npm run social-cards -- saas-foundation`.
  */
 import { mkdirSync, readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
@@ -18,6 +19,7 @@ const assets = join(root, 'src', 'assets', 'projects')
 /** Real project images used as an inset, by slug. */
 const INSETS = {
   'anti-social-finance': 'anti-social-finance/dashboard.webp',
+  'saas-foundation': 'saas-foundation/projects-owner.webp',
   'pet-platform': 'pet-platform/dashboard.webp',
   warmup: 'warmup/live-runner-and-standings.webp',
   'tiny-mobile-tower': 'tiny-mobile-tower/pixel-pipeline-comparison.webp',
@@ -90,7 +92,8 @@ function html(card) {
 mkdirSync(outDir, { recursive: true })
 const browser = await chromium.launch({ channel: 'chrome' })
 const page = await browser.newPage({ viewport: { width: 1200, height: 630 } })
-for (const card of cards) {
+const only = process.argv.slice(2)
+for (const card of cards.filter((c) => only.length === 0 || only.includes(c.file))) {
   await page.setContent(html(card), { waitUntil: 'networkidle' })
   await page.evaluate(() => document.fonts.ready)
   await page.screenshot({ path: join(outDir, `${card.file}.jpg`), type: 'jpeg', quality: 88 })

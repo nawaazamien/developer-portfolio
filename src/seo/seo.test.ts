@@ -94,7 +94,7 @@ describe('sitemap and robots', () => {
     }
     expect(xml).not.toContain('#')
     expect(xml).not.toContain('404')
-    expect(sitemapPaths().filter((path) => path.startsWith('/projects/'))).toHaveLength(10)
+    expect(sitemapPaths().filter((path) => path.startsWith('/projects/'))).toHaveLength(PROJECT_PAGES.length)
   })
 
   it('points robots.txt at the sitemap', () => {

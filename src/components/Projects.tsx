@@ -37,8 +37,7 @@ export function Projects() {
           Projects
         </h2>
         <p className="projects__tagline">
-          Substantial software, <b>actively in development</b> — built and
-          tested as real systems
+          Substantial software, <b>built and tested</b> as real systems
         </p>
       </div>
 

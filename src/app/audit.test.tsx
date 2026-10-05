@@ -84,7 +84,7 @@ describe('internal navigation', () => {
       const href = link.getAttribute('href')!
       expect(href).not.toBe('#')
       if (href.includes('github.com')) {
-        expect(href).toMatch(/^https:\/\/github\.com\/nawaazamien(\/developer-portfolio)?$/)
+        expect(href).toMatch(/^https:\/\/github\.com\/nawaazamien(\/(developer-portfolio|saas-foundation))?$/)
       }
     }
   })
