@@ -63,7 +63,7 @@ export function Footer() {
 
       <div className="footer__legal">
         <span>
-          © {COPYRIGHT_YEAR} {profile.name}
+          © {COPYRIGHT_YEAR} {profile.name} · <Link to="/credits">Credits and licences</Link>
         </span>
         <span>{profile.roleLabel} · {profile.location}</span>
       </div>

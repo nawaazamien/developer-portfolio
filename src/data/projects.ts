@@ -1,3 +1,8 @@
+import financeChartOfAccounts from '../assets/projects/anti-social-finance/chart-of-accounts.webp'
+import financeDashboard from '../assets/projects/anti-social-finance/dashboard.webp'
+import financeTransactions from '../assets/projects/anti-social-finance/transactions.webp'
+import petDashboard from '../assets/projects/pet-platform/dashboard.webp'
+import petDashboardWide from '../assets/projects/pet-platform/dashboard-wide.webp'
 import castleHoldCourtyard from '../assets/projects/castle-hold/courtyard-defence.webp'
 import kingdomForestLedger from '../assets/projects/kingdom-incremental/forest-and-ledger.webp'
 import tmtPipelineComparison from '../assets/projects/tiny-mobile-tower/pixel-pipeline-comparison.webp'
@@ -43,6 +48,46 @@ const endlessSwarm: ImageAsset = {
   caption: 'Large enemy counts on screen',
   width: 1000,
   height: 680,
+}
+
+const financeDashboardImage: ImageAsset = {
+  src: financeDashboard,
+  alt: 'Anti Social Finance dashboard for a fictional organisation: cash balance, revenue, expenses, net profit, receivables, payables and VAT position cards, a cash balance chart and a needs-attention list.',
+  caption: 'Dashboard (fictional sample organisation)',
+  width: 1280,
+  height: 978,
+}
+
+const financeTransactionsImage: ImageAsset = {
+  src: financeTransactions,
+  alt: 'Anti Social Finance transactions screen listing imported bank statement lines with date, description, account, category, amount and review status, with search and filter controls.',
+  caption: 'Imported bank transactions (sample data)',
+  width: 1280,
+  height: 800,
+}
+
+const financeChartImage: ImageAsset = {
+  src: financeChartOfAccounts,
+  alt: 'Anti Social Finance chart of accounts listing asset, liability, equity, income and expense accounts with codes, types, subtypes and posting status.',
+  caption: 'Chart of accounts',
+  width: 1280,
+  height: 800,
+}
+
+const petDashboardImage: ImageAsset = {
+  src: petDashboard,
+  alt: 'Pet Platform reference dashboard for a fictional breeder: a navigation sidebar, quick actions, current listings with status and enquiry counts, and recent enquiries.',
+  caption: 'Reference dashboard (fictional breeder, fixture content)',
+  width: 1280,
+  height: 800,
+}
+
+const petDashboardStrip: ImageAsset = {
+  src: petDashboardWide,
+  alt: 'Pet Platform reference dashboard for a fictional breeder showing a greeting, quick-action cards for adding a pet, new enquiries and website status, and the start of the current listings.',
+  caption: 'Reference dashboard (fictional breeder, fixture content)',
+  width: 1200,
+  height: 466,
 }
 
 const warmupRunnerStrip: ImageAsset = {
@@ -116,7 +161,8 @@ export const projects: Project[] = [
     featured: true,
     visibility: 'private',
     technologies: ['React', 'TypeScript', 'Vite', 'Supabase', 'PostgreSQL'],
-    screenshots: [],
+    thumbnail: financeDashboardImage,
+    screenshots: [financeDashboardImage, financeTransactionsImage, financeChartImage],
     highlights: [
       'Ledger engine: journals, posting, reversals, accounting periods and period-close controls',
       'Tenancy, role-based access control and Supabase Row Level Security',
@@ -167,7 +213,8 @@ export const projects: Project[] = [
     featured: true,
     visibility: 'private',
     technologies: ['React', 'TypeScript', 'Vite', 'Supabase'],
-    screenshots: [],
+    thumbnail: petDashboardStrip,
+    screenshots: [petDashboardImage],
     highlights: [
       'Tenant and membership foundation with per-tenant website settings and a publishing architecture',
       'Pet domain model with visibility, status, media and public listings',

@@ -103,6 +103,7 @@ export const petPlatform: CaseStudy = {
   currentStatus:
     'Active development, validated locally. There is no hosted deployment yet. Because Docker could not be used on the development machine, the database layer was validated against a Docker-free embedded PostgreSQL 17 harness (real schema, policies, functions and concurrent sessions) and a browser-level API stand-in, rather than a full local Supabase stack.',
   scopeNotes: [
+    'The screenshot is the app’s own reference dashboard, rendered from fixture content for a fictional breeder. Live data views are not shown.',
     'The notification pipeline is built against a development email provider. No real email has been sent.',
     'Not yet verified against a real Supabase deployment: error mapping through the real API, the storage round-trip, the server-function runtime and scheduling.',
     'Not built: online payments, e-signatures, calendar sync and the marketplace layer.',

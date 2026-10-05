@@ -1,12 +1,15 @@
+import { useMemo } from 'react'
 import { Link, useParams } from 'react-router'
 import { ArchitectureDiagram } from '../components/case-study/ArchitectureDiagram'
 import { ScreenshotGallery } from '../components/case-study/ScreenshotGallery'
 import { Media } from '../components/Media'
 import { caseStudies } from '../data/caseStudies'
-import { projectPageTitle } from '../data/projectSlugs'
+import { PROJECT_PAGES } from '../data/projectSlugs'
 import type { CaseStudy, Project } from '../data/types'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { useRouteFocus } from '../hooks/useRouteFocus'
+import { SITE_URL } from '../seo/applyHead'
+import { projectMeta } from '../seo/metadata'
 import {
   CATEGORY_LABELS,
   getProjects,
@@ -63,7 +66,11 @@ function Section({
 }
 
 function CaseStudyView({ project, study, previous, next }: CaseStudyViewProps) {
-  usePageMeta(projectPageTitle(project.name), study.summary)
+  const meta = useMemo(() => {
+    const page = PROJECT_PAGES.find((candidate) => candidate.slug === project.slug)!
+    return projectMeta(page, SITE_URL)
+  }, [project.slug])
+  usePageMeta(meta)
   const headingRef = useRouteFocus<HTMLHeadingElement>()
 
   const repositoryUrl = getRepositoryUrl(project)

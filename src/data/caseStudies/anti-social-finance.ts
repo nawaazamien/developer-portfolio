@@ -121,6 +121,7 @@ export const antiSocialFinance: CaseStudy = {
   currentStatus:
     'Active development. The ledger, banking, reporting and period-control work is built and verified, and migrations are applied to a hosted Supabase environment and checked with synthetic data. The newest module, project financials, is verified locally and awaiting its hosted rollout. There is no public production deployment yet.',
   scopeNotes: [
+    'The screenshots are the real interface running against fictional sample data for a made-up organisation. No real business data is shown.',
     'Statement import currently supports FNB layouts, verified with synthetic fixtures.',
     'The source is private. This page describes the design at a high level and shows no financial data.',
   ],

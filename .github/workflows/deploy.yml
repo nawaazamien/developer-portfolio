@@ -49,6 +49,8 @@ jobs:
           # Pages reports "/developer-portfolio" for a project site and "" for a
           # user site or custom domain, so the base adapts without code changes.
           VITE_BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+          # Canonical origin + base path for SEO tags, structured data and the sitemap.
+          SITE_URL: ${{ steps.pages.outputs.origin }}${{ steps.pages.outputs.base_path }}
 
       - uses: actions/upload-pages-artifact@v5
         with:

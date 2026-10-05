@@ -1,11 +1,13 @@
 import { Link } from 'react-router'
-import { SITE_NAME } from '../data/projectSlugs'
 import { usePageMeta } from '../hooks/usePageMeta'
 import { useRouteFocus } from '../hooks/useRouteFocus'
+import { notFoundMeta } from '../seo/metadata'
 import './NotFoundPage.css'
 
+const meta = notFoundMeta()
+
 export function NotFoundPage() {
-  usePageMeta(`Page not found — ${SITE_NAME}`, 'This page does not exist.')
+  usePageMeta(meta)
   const headingRef = useRouteFocus<HTMLHeadingElement>()
 
   return (

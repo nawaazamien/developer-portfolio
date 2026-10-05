@@ -5,12 +5,14 @@ interface MediaProps {
   image?: ImageAsset
   /** Faint caption for the empty state, shown until an image exists. */
   label?: string
+  /** Load immediately (above the fold) instead of lazily. */
+  priority?: boolean
   /** Applied to the wrapper; use it to size and filter the slot. */
   className?: string
 }
 
 /** Fills its container with an image, or an intentional tile until one exists. */
-export function Media({ image, label, className = '' }: MediaProps) {
+export function Media({ image, label, priority = false, className = '' }: MediaProps) {
   return (
     <div className={`media ${className}`.trim()}>
       {image ? (
@@ -20,7 +22,8 @@ export function Media({ image, label, className = '' }: MediaProps) {
           alt={image.alt}
           width={image.width}
           height={image.height}
-          loading="lazy"
+          loading={priority ? 'eager' : 'lazy'}
+          fetchPriority={priority ? 'high' : undefined}
           decoding="async"
         />
       ) : (

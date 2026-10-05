@@ -1,8 +1,19 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import { dirname, join } from 'node:path'
 import react from '@vitejs/plugin-react'
 import { defineConfig, type Plugin } from 'vite'
-import { PROJECT_PAGES, projectPageTitle } from './src/data/projectSlugs.ts'
+import { PROJECT_PAGES } from './src/data/projectSlugs.ts'
+import {
+  buildRobots,
+  buildSitemap,
+  creditsMeta,
+  homeMeta,
+  notFoundMeta,
+  projectMeta,
+  renderHead,
+  type PageMeta,
+} from './src/seo/metadata.ts'
+import { resolveSiteUrl } from './src/seo/site.ts'
 
 /*
  * Public base path. Local dev and previews use "/". The GitHub Pages workflow
@@ -12,56 +23,66 @@ import { PROJECT_PAGES, projectPageTitle } from './src/data/projectSlugs.ts'
  */
 const base = process.env.VITE_BASE_PATH || '/'
 
-const escapeAttribute = (value: string) => value.replace(/"/g, '&quot;')
+/*
+ * Canonical site URL (origin + base path) for canonical links, social tags,
+ * structured data and the sitemap. The workflow passes the value GitHub Pages
+ * reports; otherwise it defaults to the current Pages URL.
+ */
+const siteUrl = resolveSiteUrl(process.env.SITE_URL)
+
+const SEO_BLOCK = /<!--seo:start-->[\s\S]*?<!--seo:end-->/
+
+const withSeo = (html: string, meta: PageMeta) =>
+  html.replace(
+    SEO_BLOCK,
+    `<!--seo:start-->\n    ${renderHead(meta, siteUrl)}\n    <!--seo:end-->`,
+  )
 
 /**
- * GitHub Pages has no SPA rewrites, so deep links need real files. After the
- * build this emits a copy of index.html (with a route-specific title) at
- * projects/<slug>/index.html for every case study, so direct links and
- * refreshes get a 200 response, plus projects/index.html and a 404.html that
- * Pages serves for unknown URLs (the app then renders its not-found page).
+ * Search and social metadata, emitted as static HTML so scrapers that do not
+ * run JavaScript still get it. GitHub Pages has no SPA rewrites, so this also
+ * writes real files for deep links: a copy of index.html (with route-specific
+ * metadata) for every case study and the credits page, a 404.html that Pages
+ * serves for unknown URLs (the app then renders its not-found page), plus
+ * sitemap.xml and robots.txt.
  */
-function staticRoutes(): Plugin {
+function seo(): Plugin {
   let outDir = 'dist'
   return {
-    name: 'static-routes',
-    apply: 'build',
+    name: 'seo',
     configResolved(config) {
       outDir = config.build.outDir
     },
+    transformIndexHtml: {
+      order: 'pre',
+      handler: (html) => withSeo(html, homeMeta(siteUrl)),
+    },
     closeBundle() {
       const template = readFileSync(join(outDir, 'index.html'), 'utf8')
-      const emit = (path: string, html: string) => {
-        mkdirSync(join(outDir, path, '..'), { recursive: true })
-        writeFileSync(join(outDir, path), html)
-      }
-      const withTitle = (title: string, description?: string) => {
-        let html = template.replace(/<title>.*?<\/title>/s, `<title>${title}</title>`)
-        if (description) {
-          html = html.replace(
-            /(<meta\s+name="description"\s+content=")[^"]*(")/s,
-            `$1${escapeAttribute(description)}$2`,
-          )
-        }
-        return html
+      const emit = (path: string, content: string) => {
+        mkdirSync(dirname(join(outDir, path)), { recursive: true })
+        writeFileSync(join(outDir, path), content)
       }
 
       for (const page of PROJECT_PAGES) {
         emit(
           `projects/${page.slug}/index.html`,
-          withTitle(
-            projectPageTitle(page.name),
-            `Case study of ${page.name} by Nawaaz Amien.`,
-          ),
+          withSeo(template, projectMeta(page, siteUrl)),
         )
       }
+      emit('credits/index.html', withSeo(template, creditsMeta()))
       emit('projects/index.html', template)
-      emit('404.html', withTitle('Page not found — Nawaaz Amien'))
+      emit('404.html', withSeo(template, notFoundMeta()))
+      emit('sitemap.xml', buildSitemap(siteUrl))
+      emit('robots.txt', buildRobots(siteUrl))
     },
   }
 }
 
 export default defineConfig({
   base,
-  plugins: [react(), staticRoutes()],
+  plugins: [react(), seo()],
+  define: {
+    'import.meta.env.VITE_SITE_URL': JSON.stringify(siteUrl),
+  },
 })

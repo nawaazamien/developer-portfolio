@@ -1,4 +1,5 @@
 import { createBrowserRouter, Navigate } from 'react-router'
+import { CreditsPage } from '../pages/CreditsPage'
 import { HomePage } from '../pages/HomePage'
 import { NotFoundPage } from '../pages/NotFoundPage'
 import { CaseStudyRoute } from './CaseStudyRoute'
@@ -10,6 +11,7 @@ export const routes = [
     children: [
       { index: true, element: <HomePage /> },
       { path: 'projects/:slug', element: <CaseStudyRoute /> },
+      { path: 'credits', element: <CreditsPage /> },
       {
         path: 'projects',
         element: <Navigate to={{ pathname: '/', hash: '#projects' }} replace />,

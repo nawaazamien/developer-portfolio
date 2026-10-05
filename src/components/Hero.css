@@ -173,3 +173,7 @@
 .hero__title:focus {
   outline: none;
 }
+
+.hero__portrait-media .media__img {
+  object-position: 50% 18%;
+}

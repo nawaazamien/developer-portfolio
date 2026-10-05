@@ -21,6 +21,7 @@ export function Hero() {
           <Media
             image={profile.portrait}
             label={profile.initials}
+            priority
             className="hero__portrait-media"
           />
           <div className="hero__fade" aria-hidden="true" />

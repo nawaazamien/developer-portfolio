@@ -1,6 +1,8 @@
+import portraitImage from '../assets/portrait/nawaaz-amien.webp'
+import { identity } from './identity'
 import type { Fact, Profile, SkillGroup, SocialLink } from './types'
 
-export const githubUrl = 'https://github.com/nawaazamien'
+export const githubUrl = identity.githubUrl
 
 /** This site's own source — the only repository on the portfolio that is public. */
 export const portfolioSourceUrl = `${githubUrl}/developer-portfolio`
@@ -17,6 +19,12 @@ export const profile: Profile = {
     "I'm a software engineer with more than three years of professional experience, promoted from intern and associate-level work into a Software Engineer 1 role. I take features and systems from concept through to implementation across the stack.",
     'Outside work I build independent products under Anti Social Studios — from a multi-tenant accounting platform to research tooling and automation. I’m drawn to architecture, automation and technically difficult systems.',
   ],
+  portrait: {
+    src: portraitImage,
+    alt: 'Nawaaz Amien, wearing a grey blazer and standing in front of a brick wall.',
+    width: 505,
+    height: 505,
+  },
   location: 'Cape Town, South Africa',
 }
 

@@ -48,6 +48,11 @@ describe('project routes', () => {
     }
   })
 
+  it('renders the credits page', async () => {
+    renderAt('/credits')
+    expect(await screen.findByRole('heading', { level: 1, name: 'Credits and licences' })).toBeTruthy()
+  })
+
   it('shows a not-found page for an unknown slug', async () => {
     renderAt('/projects/does-not-exist')
     expect(await screen.findByRole('heading', { name: 'Page not found' })).toBeTruthy()

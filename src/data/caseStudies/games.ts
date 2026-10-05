@@ -53,7 +53,7 @@ export const tinyMobileTower: CaseStudy = {
     'Active development. Weapons, enemy types, the upgrade draft, mini-boss rewards and the first boss encounter are built. The final boss and later castle evolution are still open.',
   scopeNotes: ['This is a work in progress, not a released game.'],
   credits: [
-    'Part of the art pipeline is AI-assisted, including one boss model that was generated with an AI 3D tool and then processed and rigged. The project’s focus is the systems.',
+    'Part of the art pipeline is AI-assisted: one boss model was generated with Meshy, an AI 3D generator, then processed and rigged. It is credited per Meshy’s attribution terms and does not appear in the screenshots here. The project’s focus is the systems.',
   ],
 }
 
@@ -152,7 +152,7 @@ export const tinySwordsEndlessSurvivor: CaseStudy = {
   ],
   currentStatus:
     'Active development. The latest work covers large-horde performance and a presentation pass.',
-  credits: ['Art uses the Tiny Swords pack by Pixel Frog.'],
+  credits: ['Art uses the Tiny Swords pack by Pixel Frog, used under its free-pack terms.'],
 }
 
 export const castleHold: CaseStudy = {
@@ -199,5 +199,5 @@ export const castleHold: CaseStudy = {
   ],
   currentStatus:
     'Active development. Combat visual effects, full-run balance, the boss and an audio foundation are in place. Final audio is still to come.',
-  credits: ['Art uses the Tiny Swords pack by Pixel Frog.'],
+  credits: ['Art uses the Tiny Swords pack by Pixel Frog, used under its free-pack terms.'],
 }

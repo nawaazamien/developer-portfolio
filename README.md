@@ -55,9 +55,21 @@ A `Project` (see `src/data/types.ts`) carries category, status, visibility, tech
 
 A private project shows its description, stack, status and screenshots with a "Private repository" badge and **no source link**. Repository links are read only through `getRepositoryUrl`, which returns nothing for private projects, and `npm test` fails if a private project carries a repository URL. The future GitHub sync is designed to run at build time with a secret held in Actions, keyed by project id so private repository names never reach the client bundle.
 
+### Search and social metadata
+
+Metadata is generated at build time so crawlers and link-preview scrapers that do not run JavaScript still get it. `src/seo` builds, for the homepage, every case study and the credits page: a title and specific description, a canonical URL, Open Graph and Twitter tags, a 1200×630 social card and JSON-LD (a `Person` on the homepage; a conservative `SoftwareApplication` or `CreativeWork` plus breadcrumbs on each case study). The same build emits `sitemap.xml` and `robots.txt`. Per-project copy lives in `src/data/projectSlugs.ts`; verified public identity facts in `src/data/identity.ts`.
+
+The site URL comes from the `SITE_URL` environment variable (the Pages workflow passes the origin and base path GitHub reports) and defaults to the Pages URL, so a custom domain needs no code change. Note that crawlers only read `robots.txt` at a host root, so it takes full effect once the site is served from one.
+
+Social cards are branded designs, not screenshots. Regenerate them with `npm run social-cards` (requires Chrome); they are written to `public/social/`.
+
 ### Content safeguards
 
-`npm test` validates the dataset and routing — unique ids and slugs, a case study for every project, no repository link on private project pages, https-only external links, alt text on every image, base-aware links and not-found handling — and runs automatically before every build and in CI.
+`npm test` validates the dataset, routing and SEO output — unique ids and slugs, a case study for every project, project-specific descriptions, canonical URLs, sitemap and structured data, no repository link on private project pages, https-only external links, alt text on every image, base-aware links and not-found handling — and runs automatically before every build and in CI.
+
+## Media and credits
+
+Project captures live in `src/assets/projects/<slug>/` as optimised WebP copies, imported by `src/data/projects.ts` so Vite hashes them and applies the base path. Every image carries alt text, an optional caption and its dimensions. Captures of web apps use fictional sample data only, and nothing containing private data, credentials or customer information is committed. Projects without a safe capture show an intentional empty tile. Third-party assets and tools are credited on the `/credits` page (data in `src/data/credits.ts`).
 
 ## Deployment
 
