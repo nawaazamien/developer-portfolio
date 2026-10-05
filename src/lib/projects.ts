@@ -1,10 +1,5 @@
 import { projects } from '../data/projects'
-import type {
-  Project,
-  ProjectCategory,
-  ProjectStatus,
-  Stat,
-} from '../data/types'
+import type { Project, ProjectCategory, ProjectStatus } from '../data/types'
 
 export const CATEGORY_LABELS: Record<ProjectCategory, string> = {
   saas: 'SaaS',
@@ -46,18 +41,4 @@ export function getCategories(list: Project[]): ProjectCategory[] {
  */
 export function getRepositoryUrl(project: Project): string | undefined {
   return project.visibility === 'public' ? project.repository?.url : undefined
-}
-
-/** Counts derived from the dataset, so they can never drift from it. */
-export function getPortfolioStats(list: Project[]): Stat[] {
-  const featured = list.filter((project) => project.featured).length
-  const technologies = new Set(list.flatMap((project) => project.technologies))
-  const active = list.filter((project) => project.status === 'active').length
-
-  return [
-    { value: String(featured), label: 'Featured products' },
-    { value: String(list.length - featured), label: 'Additional projects' },
-    { value: String(active), label: 'In active development' },
-    { value: String(technologies.size), label: 'Technologies used' },
-  ]
 }

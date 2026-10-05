@@ -49,22 +49,18 @@ export const skills: SkillGroup[] = [
   },
   {
     title: 'Backend & Data',
-    items: ['PostgreSQL', 'Supabase', 'REST APIs'],
-  },
-  {
-    title: 'Languages',
-    items: ['TypeScript', 'JavaScript', 'Python', 'GDScript'],
+    items: ['Node.js', 'PostgreSQL', 'Supabase', 'REST APIs', 'Row Level Security'],
   },
   {
     title: 'Engineering Practice',
-    items: ['Git', 'GitHub', 'CI/CD', 'Automated testing'],
+    items: ['Git', 'GitHub', 'GitHub Actions', 'CI/CD', 'Automated testing'],
   },
   {
-    title: 'Automation & Tooling',
+    title: 'Also used',
+    items: ['Python', 'GDScript', 'Godot'],
+  },
+  {
+    title: 'Project-specific tooling',
     items: ['FFmpeg', 'yt-dlp', 'Ollama', 'Claude Code'],
-  },
-  {
-    title: 'Interactive',
-    items: ['Godot'],
   },
 ]

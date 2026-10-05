@@ -1,20 +1,11 @@
+import { capabilities, getAtAGlance } from '../data/engineering'
 import { projects } from '../data/projects'
-import { orbitTechnologies, services } from '../data/services'
 import { useReveal } from '../hooks/useReveal'
-import { getPortfolioStats } from '../lib/projects'
-import { Media } from './Media'
+import { CapabilityGlyph } from './CapabilityGlyph'
+import { CoreStack, EngineeringStats } from './EngineeringStats'
 import './Capabilities.css'
 
-const ORBIT_RADIUS = 40
-const stats = getPortfolioStats(projects)
-
-function orbitPosition(index: number, total: number) {
-  const angle = (index / total) * Math.PI * 2 - Math.PI / 2
-  return {
-    left: `${50 + Math.cos(angle) * ORBIT_RADIUS}%`,
-    top: `${50 + Math.sin(angle) * ORBIT_RADIUS}%`,
-  }
-}
+const stats = getAtAGlance(projects)
 
 export function Capabilities() {
   const { ref, className } = useReveal<HTMLElement>()
@@ -38,18 +29,17 @@ export function Capabilities() {
       </div>
 
       <ul className="capabilities__list">
-        {services.map((service, index) => (
-          <li key={service.id} className="capabilities__item">
-            <Media
-              image={service.image}
-              label={String(index + 1).padStart(2, '0')}
-              className="capabilities__media"
-            />
-            <h3 className="capabilities__title">{service.title}</h3>
-            <p className="capabilities__body">{service.body}</p>
-            <ul className="tag-list">
-              {service.tags.map((tag) => (
-                <li key={tag} className="tag capabilities__tag">
+        {capabilities.map((capability, index) => (
+          <li key={capability.id} className="card capability">
+            <span className="capability__index" aria-hidden="true">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            <CapabilityGlyph id={capability.id} />
+            <h3 className="capability__title">{capability.title}</h3>
+            <p className="capability__body">{capability.description}</p>
+            <ul className="tag-list capability__tags" aria-label="Technologies">
+              {capability.technologies.map((tag) => (
+                <li key={tag} className="tag capability__tag">
                   {tag}
                 </li>
               ))}
@@ -62,8 +52,8 @@ export function Capabilities() {
         <div className="capabilities__overview-copy">
           <h3 className="subheading">At a glance</h3>
           <p className="capabilities__overview-text">
-            A summary counted directly from the projects listed in this
-            portfolio.
+            Counted from this portfolio’s own data, plus the Lighthouse audit of
+            its published pages.
           </p>
           <ul className="capabilities__stats">
             {stats.map((stat) => (
@@ -73,24 +63,10 @@ export function Capabilities() {
               </li>
             ))}
           </ul>
+          <CoreStack />
         </div>
 
-        <div className="orbit">
-          <div className="orbit__ring" aria-hidden="true" />
-          <div className="orbit__ring orbit__ring--inner" aria-hidden="true" />
-          <div className="orbit__core">Stack</div>
-          <ul className="orbit__list" aria-label="Technologies">
-            {orbitTechnologies.map((name, index) => (
-              <li
-                key={name}
-                className="orbit__chip"
-                style={orbitPosition(index, orbitTechnologies.length)}
-              >
-                {name}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <EngineeringStats />
       </div>
     </section>
   )

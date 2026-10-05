@@ -144,19 +144,6 @@ export interface EducationEntry {
   institution: string
 }
 
-export interface Service {
-  id: string
-  title: string
-  body: string
-  tags: string[]
-  image?: ImageAsset
-}
-
-export interface Stat {
-  value: string
-  label: string
-}
-
 export interface Profile {
   name: string
   firstName: string
