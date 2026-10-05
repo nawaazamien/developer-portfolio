@@ -1,3 +1,5 @@
+import type { ProjectSlug } from './projectSlugs'
+
 export type ProjectStatus =
   | 'planning'
   | 'active'
@@ -25,10 +27,50 @@ export interface ImageAsset {
   height: number
 }
 
+export interface TitledText {
+  title: string
+  body: string
+}
+
+/** A node in an architecture diagram; `children` branch out beneath it. */
+export interface DiagramNode {
+  label: string
+  note?: string
+  children?: DiagramNode[]
+}
+
+export interface ArchitectureDiagram {
+  title: string
+  /** Plain-language equivalent for people who cannot see the diagram. */
+  description: string
+  /** Stages from top to bottom. */
+  flow: DiagramNode[]
+}
+
+/**
+ * Structured case-study content. Everything but the core fields is optional so
+ * a concise study and a deep one share one page template.
+ */
 export interface CaseStudy {
   summary: string
-  challenges: string[]
-  architecture?: string
+  role: string
+  overview: string[]
+  problem?: string[]
+  goals?: string[]
+  keyFeatures: TitledText[]
+  architecture?: {
+    summary: string
+    points?: string[]
+    diagram?: ArchitectureDiagram
+  }
+  engineeringChallenges?: TitledText[]
+  technicalDecisions?: TitledText[]
+  testing?: string[]
+  currentStatus: string
+  lessons?: string[]
+  /** Honest scope limits, e.g. "research system — no live trading". */
+  scopeNotes?: string[]
+  credits?: string[]
 }
 
 /**
@@ -38,7 +80,7 @@ export interface CaseStudy {
  */
 export interface Project {
   id: string
-  slug: string
+  slug: ProjectSlug
   name: string
   shortDescription: string
   longDescription?: string
@@ -66,7 +108,6 @@ export interface Project {
   latestMilestone?: string
   /** Short engineering points shown on featured cards. */
   highlights: string[]
-  caseStudy?: CaseStudy
   displayOrder: number
 }
 

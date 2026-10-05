@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import type { Project } from '../data/types'
 import { CATEGORY_LABELS, getRepositoryUrl, getStatusLabel } from '../lib/projects'
 import { Media } from './Media'
@@ -69,6 +70,13 @@ export function ProjectCard({ project, variant }: ProjectCardProps) {
           ))}
         </ul>
         <div className="project-card__links">
+          <Link
+            className="project-card__case"
+            to={`/projects/${project.slug}`}
+            aria-label={`View case study: ${project.name}`}
+          >
+            View case study <span aria-hidden="true">→</span>
+          </Link>
           {repositoryUrl ? (
             <a
               className="project-card__link"

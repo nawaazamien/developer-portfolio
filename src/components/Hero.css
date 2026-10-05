@@ -169,3 +169,7 @@
     justify-content: flex-start;
   }
 }
+
+.hero__title:focus {
+  outline: none;
+}

@@ -1,19 +1,24 @@
+import { Link } from 'react-router'
 import { githubUrl, profile } from '../data/profile'
 import './Header.css'
 
 const NAV_LINKS = [
-  { href: '#home', label: 'Home' },
-  { href: '#work', label: 'Work' },
-  { href: '#capabilities', label: 'What I build' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#contact', label: 'Contact' },
+  { hash: '#home', label: 'Home' },
+  { hash: '#work', label: 'Work' },
+  { hash: '#capabilities', label: 'What I build' },
+  { hash: '#projects', label: 'Projects' },
+  { hash: '#contact', label: 'Contact' },
 ]
 
 export function Header() {
   return (
     <header className="header">
       <nav className="header__nav" aria-label="Primary">
-        <a className="header__brand" href="#home" aria-label={`${profile.name} — home`}>
+        <Link
+          className="header__brand"
+          to={{ pathname: '/', hash: '#home' }}
+          aria-label={`${profile.name} — home`}
+        >
           <span className="header__mark" aria-hidden="true">
             {profile.initials}
           </span>
@@ -22,11 +27,11 @@ export function Header() {
             <br />
             {profile.lastName}
           </span>
-        </a>
+        </Link>
         <ul className="header__links">
           {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <a href={link.href}>{link.label}</a>
+            <li key={link.hash}>
+              <Link to={{ pathname: '/', hash: link.hash }}>{link.label}</Link>
             </li>
           ))}
           <li>

@@ -28,20 +28,28 @@ Requires a current Node.js LTS (24 is used in CI).
 
 ```
 src/
-  components/     UI sections (Header, Hero, About, Work, Capabilities, Projects, Footer), ProjectCard, Media
-  data/           typed, centralised content: profile, experience, services, projects
+  app/            router, root layout, scroll and focus management
+  pages/          route components: home, case study, not found
+  components/     homepage sections, ProjectCard, Media, case-study pieces (diagram, gallery)
+  data/           typed, centralised content: profile, experience, services, projects, case studies
   assets/         optimised project images, one folder per project
-  hooks/          shared hooks (scroll-reveal)
+  hooks/          shared hooks (scroll-reveal, page metadata, route focus)
   integrations/   seam for future GitHub-derived project metadata
   lib/            project selection, labels, repository-visibility rules, validation
   styles/         design tokens and base styles; component CSS sits beside its component
 ```
 
-The page is a single scrolling view with in-page anchors. UI renders only from `src/data` through `src/lib`; nothing project-specific is hardcoded in components.
+The homepage is a single scrolling view; each project also has a case-study page at `/projects/<slug>`. UI renders only from `src/data` through `src/lib`; nothing project-specific is hardcoded in components.
+
+### Routing
+
+React Router (`/` and `/projects/:slug`, plus a not-found route). The case-study route is code-split, so the homepage bundle does not carry case-study content. After each navigation the page heading receives focus, hash links scroll to and focus their section, and each page sets its own document title and description.
+
+GitHub Pages has no SPA rewrites, so the build emits real files: a copy of `index.html` at `projects/<slug>/index.html` for every project (so direct links and refreshes return 200 with a route-specific title), and a `404.html` that Pages serves for unknown URLs, which the app renders as its not-found page. The list of slugs lives in `src/data/projectSlugs.ts`, and a test keeps it in step with the project data. The router's basename comes from Vite's base, so everything still works under `/developer-portfolio/` and, later, at a custom domain root.
 
 ### Project data model
 
-A `Project` (see `src/data/types.ts`) carries category, status, visibility, technologies, highlights, media (`thumbnail`, `screenshots` with alt text, caption and dimensions), an optional case study and a display order. Curated fields are kept separate from fields a GitHub sync can derive later (last push, language, releases), which are layered on by `enrichProject` in `src/integrations/github`.
+A `Project` (see `src/data/types.ts`) carries category, status, visibility, technologies, highlights, media (`thumbnail`, `screenshots` with alt text, caption and dimensions) and a display order. Its case study — overview, problem, features, architecture diagram, challenges, decisions, testing and status — is structured data in `src/data/caseStudies`, rendered by one reusable page. Curated fields are kept separate from fields a GitHub sync can derive later (last push, language, releases), which are layered on by `enrichProject` in `src/integrations/github`.
 
 ### Private projects
 
@@ -49,7 +57,7 @@ A private project shows its description, stack, status and screenshots with a "P
 
 ### Content safeguards
 
-`npm test` validates the dataset — unique ids and slugs, at least one featured project, no repository on private projects, https-only external links, alt text on every image — and runs automatically before every build and in CI.
+`npm test` validates the dataset and routing — unique ids and slugs, a case study for every project, no repository link on private project pages, https-only external links, alt text on every image, base-aware links and not-found handling — and runs automatically before every build and in CI.
 
 ## Deployment
 

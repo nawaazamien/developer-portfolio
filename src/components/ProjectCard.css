@@ -167,3 +167,14 @@
     font-size: 14px;
   }
 }
+
+.project-card__case {
+  padding: 4px 0;
+  border-bottom: 1px solid var(--color-text);
+  color: var(--color-text);
+}
+
+.project-card__case:hover {
+  color: var(--color-text-muted);
+  border-color: var(--color-text-muted);
+}

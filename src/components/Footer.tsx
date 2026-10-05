@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import { githubUrl, portfolioSourceUrl, profile } from '../data/profile'
 import { useReveal } from '../hooks/useReveal'
 import './Footer.css'
@@ -5,10 +6,10 @@ import './Footer.css'
 const COPYRIGHT_YEAR = new Date().getFullYear()
 
 const FOOTER_LINKS = [
-  { href: '#home', label: 'Home' },
-  { href: '#work', label: 'Work' },
-  { href: '#capabilities', label: 'What I build' },
-  { href: '#projects', label: 'Projects' },
+  { hash: '#home', label: 'Home' },
+  { hash: '#work', label: 'Work' },
+  { hash: '#capabilities', label: 'What I build' },
+  { hash: '#projects', label: 'Projects' },
 ]
 
 export function Footer() {
@@ -54,9 +55,9 @@ export function Footer() {
       <nav className="footer__column" aria-label="Footer">
         <h3>Links</h3>
         {FOOTER_LINKS.map((link) => (
-          <a key={link.href} href={link.href}>
+          <Link key={link.hash} to={{ pathname: '/', hash: link.hash }}>
             {link.label}
-          </a>
+          </Link>
         ))}
       </nav>
 

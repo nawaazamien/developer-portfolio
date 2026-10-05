@@ -23,6 +23,19 @@ describe('portfolio content', () => {
   })
 })
 
+describe('project media', () => {
+  it('has useful alt text and positive dimensions on every image', () => {
+    for (const project of projects) {
+      const images = [...project.screenshots, ...(project.thumbnail ? [project.thumbnail] : [])]
+      for (const image of images) {
+        expect(image.alt.length).toBeGreaterThan(30)
+        expect(image.width).toBeGreaterThan(0)
+        expect(image.height).toBeGreaterThan(0)
+      }
+    }
+  })
+})
+
 describe('validateProjects', () => {
   const base: Project = { ...projects[0] }
 

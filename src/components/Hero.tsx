@@ -1,9 +1,11 @@
 import { profile, socialLinks } from '../data/profile'
+import { useRouteFocus } from '../hooks/useRouteFocus'
 import { Media } from './Media'
 import './Hero.css'
 
 export function Hero() {
   const [roleLead, ...roleRest] = profile.roleLabel.split(' ')
+  const headingRef = useRouteFocus<HTMLHeadingElement>()
 
   return (
     <section id="home" className="section hero" aria-labelledby="hero-title">
@@ -24,7 +26,7 @@ export function Hero() {
           <div className="hero__fade" aria-hidden="true" />
         </div>
         <div className="hero__copy">
-          <h1 id="hero-title" className="hero__title">
+          <h1 ref={headingRef} tabIndex={-1} id="hero-title" className="hero__title">
             <span className="hero__first">{profile.firstName}</span>
             <span className="hero__last">{profile.lastName}</span>
           </h1>
