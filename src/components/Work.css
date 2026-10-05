@@ -1,0 +1,100 @@
+.work__circle {
+  right: -60px;
+  top: 20px;
+  width: 260px;
+  height: 260px;
+}
+
+.work__title {
+  position: relative;
+  margin-bottom: 40px;
+  text-align: right;
+}
+
+.work__jobs {
+  position: relative;
+}
+
+.work__job {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: 32px;
+  padding: 26px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.work__cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.work__cell--wide {
+  gap: 8px;
+}
+
+.work__dates {
+  font: 700 13px var(--font-body);
+}
+
+.work__meta {
+  font: 400 12px var(--font-body);
+  color: var(--color-text-faint);
+}
+
+.work__company {
+  font: 600 15px var(--font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.work__role {
+  font: 700 14px var(--font-body);
+}
+
+.work__body {
+  font: 400 13px / 1.65 var(--font-body);
+  color: var(--color-text-soft);
+  text-wrap: pretty;
+}
+
+.work__journey-title {
+  position: relative;
+  margin: 64px 0 12px;
+}
+
+.work__journey-intro {
+  position: relative;
+  margin-bottom: 28px;
+  max-width: 720px;
+  font: 400 13px / 1.7 var(--font-body);
+  color: var(--color-text-soft);
+}
+
+.work__journey {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: 20px;
+}
+
+.work__milestone {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 28px;
+  text-align: center;
+}
+
+.work__year {
+  font: 700 36px var(--font-display);
+}
+
+.work__milestone-title {
+  font: 700 13px var(--font-body);
+}
+
+.work__milestone p {
+  font: 400 12px / 1.65 var(--font-body);
+  color: var(--color-text-soft);
+}

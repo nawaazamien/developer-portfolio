@@ -1,0 +1,71 @@
+.footer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+  gap: 40px;
+  padding: 64px var(--gutter);
+  background: var(--color-bg-footer);
+  border-top: 1px solid var(--color-border-subtle);
+  scroll-margin-top: var(--nav-height);
+}
+
+.footer__cta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer__mark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--color-text);
+  font: 600 20px var(--font-display);
+}
+
+.footer__cta h2 {
+  font: 700 24px / 1.3 var(--font-body);
+}
+
+.footer__cta p {
+  max-width: 360px;
+  font: 400 13px / 1.6 var(--font-body);
+  color: var(--color-text-soft);
+}
+
+.footer__button {
+  align-self: flex-start;
+}
+
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font: 400 13px var(--font-body);
+  color: var(--color-text-muted);
+}
+
+.footer__column h3 {
+  font: 700 13px var(--font-body);
+  color: var(--color-text);
+}
+
+.footer__column a {
+  color: var(--color-text-muted);
+}
+
+.footer__column a:hover {
+  color: var(--color-text);
+}
+
+.footer__legal {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border-subtle);
+  font: 400 12px var(--font-body);
+  color: var(--color-text-faint);
+}

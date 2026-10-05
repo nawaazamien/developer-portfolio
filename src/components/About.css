@@ -1,0 +1,68 @@
+.about {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 48px;
+  padding-top: 56px;
+  padding-bottom: 56px;
+}
+
+.about__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about__text {
+  font: 400 14px / 1.7 var(--font-body);
+  color: var(--color-text-muted);
+  text-wrap: pretty;
+}
+
+.about__facts {
+  display: grid;
+  row-gap: 12px;
+  margin: 0;
+  font: 400 13px var(--font-body);
+}
+
+.about__fact {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+}
+
+.about__fact dt {
+  color: var(--color-text-faint);
+}
+
+.about__fact dd {
+  margin: 0;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.about__skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: 14px;
+}
+
+.about__skill {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  transition: border-color var(--duration-fast);
+}
+
+.about__skill:hover {
+  border-color: var(--color-border-accent);
+}
+
+.about__skill h3 {
+  font: 700 14px var(--font-body);
+}
+
+.about__skill p {
+  font: 400 12px / 1.6 var(--font-body);
+  color: var(--color-text-soft);
+}
