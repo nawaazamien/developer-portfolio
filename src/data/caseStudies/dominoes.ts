@@ -81,5 +81,6 @@ export const dominoes: CaseStudy = {
   scopeNotes: [
     'Desktop and mobile packaging are planned, not built.',
     'Branding is a working name and may change.',
+    'The screenshot shows an early local pass-and-play client that runs without any server. The other graphics are diagrams drawn from the implemented design, not screenshots.',
   ],
 }

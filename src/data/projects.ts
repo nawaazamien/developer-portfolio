@@ -3,6 +3,16 @@ import financeDashboard from '../assets/projects/anti-social-finance/dashboard.w
 import financeTransactions from '../assets/projects/anti-social-finance/transactions.webp'
 import petDashboard from '../assets/projects/pet-platform/dashboard.webp'
 import petDashboardWide from '../assets/projects/pet-platform/dashboard-wide.webp'
+import dominoesCommandPipeline from '../assets/projects/dominoes/command-pipeline.webp'
+import dominoesLocalPlay from '../assets/projects/dominoes/local-pass-and-play.webp'
+import dominoesOverview from '../assets/projects/dominoes/platform-overview.webp'
+import dominoesRewardClaim from '../assets/projects/dominoes/reward-claim.webp'
+import traderIntegrityImage from '../assets/projects/anti-social-trader/data-integrity.webp'
+import traderFunnelImage from '../assets/projects/anti-social-trader/research-funnel.webp'
+import traderLedgerImage from '../assets/projects/anti-social-trader/research-ledger.webp'
+import youtubePipelineDetail from '../assets/projects/youtube-automation/pipeline-detail.webp'
+import youtubePipelineOverview from '../assets/projects/youtube-automation/pipeline-overview.webp'
+import youtubeValidation from '../assets/projects/youtube-automation/render-validation.webp'
 import castleHoldCourtyard from '../assets/projects/castle-hold/courtyard-defence.webp'
 import kingdomForestLedger from '../assets/projects/kingdom-incremental/forest-and-ledger.webp'
 import tmtPipelineComparison from '../assets/projects/tiny-mobile-tower/pixel-pipeline-comparison.webp'
@@ -88,6 +98,86 @@ const petDashboardStrip: ImageAsset = {
   caption: 'Reference dashboard (fictional breeder, fixture content)',
   width: 1200,
   height: 466,
+}
+
+const traderFunnel: ImageAsset = {
+  src: traderFunnelImage,
+  alt: 'Instrument universe screening: 1,992 symbols in a broker census, 72 data-eligible after history and cost checks, and 15 cost-eligible symbols across 14 markets after measuring costs from 1.35 billion quote ticks.',
+  caption: 'Instrument universe screening (figures from the project’s own reports)',
+  width: 1200,
+  height: 470,
+}
+
+const traderLedger: ImageAsset = {
+  src: traderLedgerImage,
+  alt: 'Table of research outcomes by phase, 3 to 20: most phases ended with no candidate or a negative result, a few data phases and narrow or inconclusive results, and the shadow phase still open. A note states no profitable strategy has been demonstrated and live trading is disabled.',
+  caption: 'Outcomes by research phase, from the project’s experiment log',
+  width: 1280,
+  height: 1212,
+}
+
+const traderIntegrity: ImageAsset = {
+  src: traderIntegrityImage,
+  alt: 'Six-stage verified market-data pipeline (download, verify, normalise, validate, resample, manifest) with results for one-minute BTC/USDT history: 99.89 percent of rows present, 22 preserved gaps, no duplicate or invalid rows and 2,557 checksum-verified daily partitions.',
+  caption: 'Verified market-data pipeline and its integrity results',
+  width: 1280,
+  height: 762,
+}
+
+const youtubeOverview: ImageAsset = {
+  src: youtubePipelineOverview,
+  alt: 'Six pipeline stages from long-form video to verified clip candidates: ingest, transcribe, segment, scout and direct with a local model, verify, and plan with render checks. A note says there is no upload or publishing step.',
+  caption: 'Pipeline overview',
+  width: 1200,
+  height: 470,
+}
+
+const youtubeDetail: ImageAsset = {
+  src: youtubePipelineDetail,
+  alt: 'Twelve pipeline stages in two groups: nine automated stages from URL to verified candidates, and three explicit steps (edit plan, DaVinci Resolve edit and render, render validation). A note says nothing is uploaded or published.',
+  caption: 'Automated run versus explicit steps',
+  width: 1280,
+  height: 840,
+}
+
+const youtubeValidationImage: ImageAsset = {
+  src: youtubeValidation,
+  alt: 'Render validation report for two synthetic test clips. The clean clip passes dimensions, duration, audio and black-frame checks. The defective clip fails because it has no audio stream and four seconds of black frames.',
+  caption: 'Render validation on synthetic test clips (not real footage)',
+  width: 1280,
+  height: 862,
+}
+
+const dominoesOverviewImage: ImageAsset = {
+  src: dominoesOverview,
+  alt: 'Server-authoritative match flow: a React client sends intent to a Worker, which routes to a Durable Object match room that runs a deterministic rules engine, commits state atomically and sends each player a redacted view.',
+  caption: 'Server-authoritative match flow',
+  width: 1200,
+  height: 470,
+}
+
+const dominoesPipelineImage: ImageAsset = {
+  src: dominoesCommandPipeline,
+  alt: 'Ten-step pipeline for processing one move: identify the caller, parse the envelope, check idempotency and sequence, adapt the command, apply it to the rules engine, re-check invariants, build responses, commit atomically and send after commit.',
+  caption: 'How one move is processed',
+  width: 1280,
+  height: 837,
+}
+
+const dominoesRewardImage: ImageAsset = {
+  src: dominoesRewardClaim,
+  alt: 'Exactly-once weekly reward claim across client, Worker route and database function. A first claim creates a row, records a reward event and grants the cosmetic; a duplicate claim conflicts on the unique key and changes nothing.',
+  caption: 'Exactly-once weekly reward claim',
+  width: 1280,
+  height: 665,
+}
+
+const dominoesLocalImage: ImageAsset = {
+  src: dominoesLocalPlay,
+  alt: 'Early local pass-and-play client: a chain of dominoes on the table, the open ends and the current player’s hand with a legal move offered.',
+  caption: 'Early local pass-and-play client',
+  width: 960,
+  height: 420,
 }
 
 const warmupRunnerStrip: ImageAsset = {
@@ -177,7 +267,7 @@ export const projects: Project[] = [
     shortDescription:
       'A quantitative research and backtesting platform for algorithmic trading, built around reproducible, preregistered methodology. A research system — no live trading.',
     longDescription:
-      'Python 3.12 with uv, Pydantic, strict typing and linting. Includes Binance Vision market-data ingestion with checksum verification, 1-minute kline datasets, event-driven backtesting with transaction-cost modelling, cross-asset research and FxPro instrument-universe analysis.',
+      'Python 3.12 with uv, Pydantic, strict typing and linting. Includes Binance Vision market-data ingestion with checksum verification, 1-minute kline datasets, event-driven backtesting with transaction-cost modelling, cross-asset research and FX and CFD instrument-universe analysis.',
     category: 'data-research',
     projectType: 'Backtesting & research platform',
     status: 'active',
@@ -191,7 +281,8 @@ export const projects: Project[] = [
       'Event-driven backtesting',
       'Market data pipelines',
     ],
-    screenshots: [],
+    thumbnail: traderFunnel,
+    screenshots: [traderFunnel, traderLedger, traderIntegrity],
     highlights: [
       'Market-data ingestion from Binance Vision with checksum verification',
       'Event-driven backtesting with transaction-cost modelling',
@@ -231,17 +322,20 @@ export const projects: Project[] = [
     category: 'automation',
     projectType: 'Video automation pipeline',
     status: 'active',
+    statusLabel: 'Prototype',
     featured: true,
     visibility: 'private',
     technologies: [
       'Python',
       'yt-dlp',
+      'faster-whisper',
       'FFmpeg',
       'Ollama',
       'Qwen',
       'DaVinci Resolve',
     ],
-    screenshots: [],
+    thumbnail: youtubeOverview,
+    screenshots: [youtubeOverview, youtubeValidationImage, youtubeDetail],
     highlights: [
       'Media ingestion with yt-dlp and audio/video segmentation',
       'Content-unit detection and candidate clipping with local LLMs',
@@ -351,13 +445,15 @@ export const projects: Project[] = [
     visibility: 'private',
     technologies: [
       'TypeScript',
+      'React',
       'Cloudflare Workers',
       'Durable Objects',
       'Supabase',
       'Zod',
       'Playwright',
     ],
-    screenshots: [],
+    thumbnail: dominoesOverviewImage,
+    screenshots: [dominoesOverviewImage, dominoesPipelineImage, dominoesRewardImage, dominoesLocalImage],
     highlights: [],
     displayOrder: 10,
   },

@@ -18,7 +18,7 @@
   position: relative;
   font: 700 clamp(72px, 14vw, 140px) / 0.9 var(--font-display);
   letter-spacing: 0.06em;
-  color: var(--color-border-strong);
+  color: var(--color-border-accent);
 }
 
 .not-found h1,

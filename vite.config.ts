@@ -59,6 +59,7 @@ function seo(): Plugin {
     },
     closeBundle() {
       const template = readFileSync(join(outDir, 'index.html'), 'utf8')
+      const withoutHomeOnly = (html: string) => html.replace(/<link[^>]*data-route="home"[^>]*>\s*/g, '')
       const emit = (path: string, content: string) => {
         mkdirSync(dirname(join(outDir, path)), { recursive: true })
         writeFileSync(join(outDir, path), content)
@@ -67,21 +68,67 @@ function seo(): Plugin {
       for (const page of PROJECT_PAGES) {
         emit(
           `projects/${page.slug}/index.html`,
-          withSeo(template, projectMeta(page, siteUrl)),
+          withSeo(withoutHomeOnly(template), projectMeta(page, siteUrl)),
         )
       }
-      emit('credits/index.html', withSeo(template, creditsMeta()))
+      emit('credits/index.html', withSeo(withoutHomeOnly(template), creditsMeta()))
       emit('projects/index.html', template)
-      emit('404.html', withSeo(template, notFoundMeta()))
+      emit('404.html', withSeo(withoutHomeOnly(template), notFoundMeta()))
       emit('sitemap.xml', buildSitemap(siteUrl))
       emit('robots.txt', buildRobots(siteUrl))
     },
   }
 }
 
+/**
+ * Preloads what the first paint needs, so the browser does not have to wait
+ * for JavaScript and CSS to discover it: the two body fonts on every page, and
+ * the hero portrait (marked home-only, then stripped from the other routes).
+ */
+function preloadCritical(): Plugin {
+  let publicBase = '/'
+  return {
+    name: 'preload-critical',
+    configResolved(config) {
+      publicBase = config.base
+    },
+    transformIndexHtml: {
+      order: 'post',
+      handler(_html, ctx) {
+        if (!ctx.bundle) return
+        const files = Object.keys(ctx.bundle)
+        const href = (pattern: RegExp) => {
+          const file = files.find((name) => pattern.test(name))
+          return file ? `${publicBase}${file}` : undefined
+        }
+        const tags = []
+        for (const pattern of [/oswald-latin-wght-normal.*\.woff2$/, /nunito-latin-wght-normal.*\.woff2$/]) {
+          const url = href(pattern)
+          if (url) {
+            tags.push({
+              tag: 'link',
+              attrs: { rel: 'preload', as: 'font', type: 'font/woff2', href: url, crossorigin: '' },
+              injectTo: 'head-prepend' as const,
+            })
+          }
+        }
+        const portrait = href(/nawaaz-amien.*\.webp$/)
+        if (portrait) {
+          tags.push({
+            tag: 'link',
+            attrs: { rel: 'preload', as: 'image', href: portrait, fetchpriority: 'high', 'data-route': 'home' },
+            injectTo: 'head-prepend' as const,
+          })
+        }
+        return tags
+      },
+    },
+  }
+}
+
 export default defineConfig({
   base,
-  plugins: [react(), seo()],
+  plugins: [react(), seo(), preloadCritical()],
   define: {
     'import.meta.env.VITE_SITE_URL': JSON.stringify(siteUrl),
   },

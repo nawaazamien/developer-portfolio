@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, render, screen, waitFor } from '@testing-library/react'
 import { createMemoryRouter, RouterProvider } from 'react-router'
 import { afterEach, describe, expect, it } from 'vitest'
 import { ProjectCard } from '../components/ProjectCard'
@@ -35,7 +35,7 @@ describe('project routes', () => {
   it('renders a case study for a known slug and sets its title', async () => {
     renderAt('/projects/warmup')
     expect(await screen.findByRole('heading', { level: 1, name: 'Warmup' })).toBeTruthy()
-    expect(document.title).toBe('Warmup — Nawaaz Amien')
+    await waitFor(() => expect(document.title).toBe('Warmup — Nawaaz Amien'))
   })
 
   it('renders every case study without errors', async () => {
@@ -56,7 +56,7 @@ describe('project routes', () => {
   it('shows a not-found page for an unknown slug', async () => {
     renderAt('/projects/does-not-exist')
     expect(await screen.findByRole('heading', { name: 'Page not found' })).toBeTruthy()
-    expect(document.title).toContain('Page not found')
+    await waitFor(() => expect(document.title).toContain('Page not found'))
   })
 
   it('exposes no repository link on private project pages', async () => {

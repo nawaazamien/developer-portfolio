@@ -1,0 +1,42 @@
+{
+  "good": {
+    "output_exists": true,
+    "width": 1080,
+    "height": 1920,
+    "dimensions_ok": true,
+    "duration_seconds": 12.0,
+    "duration_ok": true,
+    "has_audio": true,
+    "mean_volume_db": -21.1,
+    "silent": false,
+    "black_periods": [],
+    "unexpected_black": false,
+    "edl_source_ranges_ok": null,
+    "problems": [],
+    "passed": true
+  },
+  "defective": {
+    "output_exists": true,
+    "width": 1080,
+    "height": 1920,
+    "dimensions_ok": true,
+    "duration_seconds": 12.0,
+    "duration_ok": true,
+    "has_audio": false,
+    "mean_volume_db": null,
+    "silent": null,
+    "black_periods": [
+      [
+        4.0,
+        8.0
+      ]
+    ],
+    "unexpected_black": true,
+    "edl_source_ranges_ok": null,
+    "problems": [
+      "no audio stream found",
+      "unexpected long black frames: [(4.0, 8.0)]"
+    ],
+    "passed": false
+  }
+}

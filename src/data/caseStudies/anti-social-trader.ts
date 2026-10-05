@@ -107,7 +107,7 @@ export const antiSocialTrader: CaseStudy = {
   scopeNotes: [
     'Research-oriented: there is no live-money trading, and live order permission is disabled by construction.',
     'Nothing here is evidence of profitability. The rejections are the point.',
-    'Strategy parameters, data and results are private.',
+    'Strategy parameters, data and results are private. The graphics here are built from the project’s own reports and describe process and screening, not performance.',
   ],
   lessons: [
     'A well-recorded rejection is a result. It is more useful than a flattering backtest that cannot be trusted.',

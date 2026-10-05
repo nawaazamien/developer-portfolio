@@ -5,7 +5,7 @@ export const youtubeAutomation: CaseStudy = {
     'A local-first pipeline that turns a long-form video into verified clip candidates and an edit plan for vertical 9:16 shorts, using local speech recognition and a local language model.',
   role: 'Product and engineering owner (independent project)',
   overview: [
-    'YouTube Automation takes a long-form video from a URL, normalises it, transcribes it, finds self-contained moments worth clipping, and prepares a controlled vertical edit. Everything runs on a local machine: speech recognition with faster-whisper and clip judgement with a local model served by Ollama.',
+    'YouTube Automation takes a long-form video from a URL, normalises it, transcribes it, finds self-contained moments worth clipping, and prepares a controlled vertical edit. By default it runs on a local machine: speech recognition with faster-whisper and clip judgement with a local model served by Ollama.',
     'It is a clip-candidate selection and edit-planning pipeline. It does not publish or upload anything.',
   ],
   problem: [
@@ -96,7 +96,7 @@ export const youtubeAutomation: CaseStudy = {
     'A working prototype in active development. Going from a URL to verified candidate clips runs end to end; Resolve edits are an explicit, controlled step. There is no dashboard and no publishing step.',
   scopeNotes: [
     'No autonomous publishing: nothing is uploaded or posted.',
-    'No third-party footage or transcripts are shown on this site.',
+    'No third-party footage or transcripts are shown on this site. The render-validation graphic uses synthetic test patterns generated for the demonstration, not real footage.',
   ],
   lessons: [
     'Treating a language model as one noisy stage in a checked pipeline, rather than the pipeline itself, is what made the output trustworthy enough to build on.',

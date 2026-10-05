@@ -21,8 +21,8 @@
   --color-border-accent: #6a6a6a;
 
   /* Typography */
-  --font-display: Oswald, 'Arial Narrow', sans-serif;
-  --font-body: Nunito, system-ui, sans-serif;
+  --font-display: 'Oswald Variable', Oswald, 'Arial Narrow', sans-serif;
+  --font-body: 'Nunito Variable', Nunito, system-ui, sans-serif;
 
   /* Layout */
   --container-max: 1280px;

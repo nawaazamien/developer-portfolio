@@ -29,9 +29,16 @@ export function CreditsPage() {
             </h2>
             <p>{credit.usedFor}</p>
             <p className="credits__terms">{credit.terms}</p>
-            <a href={credit.url} target="_blank" rel="noreferrer">
-              {new URL(credit.url).host}
-            </a>
+            <div className="credits__links">
+              <a href={credit.url} target="_blank" rel="noreferrer">
+                {new URL(credit.url).host}
+              </a>
+              {credit.licenceFiles?.map((file) => (
+                <a key={file.path} href={`${import.meta.env.BASE_URL}${file.path}`}>
+                  {file.label}
+                </a>
+              ))}
+            </div>
           </li>
         ))}
       </ul>

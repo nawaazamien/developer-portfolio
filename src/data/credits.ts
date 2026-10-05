@@ -4,6 +4,8 @@ export interface Credit {
   usedFor: string
   terms: string
   url: string
+  /** Licence texts served from this site, as paths under the site base. */
+  licenceFiles?: { label: string; path: string }[]
 }
 
 /**
@@ -18,7 +20,7 @@ export const credits: Credit[] = [
     usedFor:
       'Pixel art in Kingdom Incremental, Tiny Swords — Endless Survivor and Castle Hold, as seen in their screenshots.',
     terms:
-      'The free and enemy packs may be used in personal and commercial projects and modified; redistributing, reselling or repackaging the assets is not allowed. Credit is optional and welcome. No asset files are included in this repository.',
+      'Per the author’s own page, the packs may be used in personal and commercial projects and modified as needed. Redistributing, reselling or repackaging them is not allowed. Credit is not required but welcome. The page does not mention screenshots or videos; only screenshots of the games are shown here, and no asset files are included in this repository.',
     url: 'https://pixelfrog-assets.itch.io/tiny-swords',
   },
   {
@@ -27,15 +29,19 @@ export const credits: Credit[] = [
     usedFor:
       'One boss model in Tiny Mobile Tower was generated with Meshy, an AI 3D generator, then processed and rigged. It does not appear in the screenshots on this site.',
     terms:
-      'Meshy licenses generated models by plan: free-plan output is under CC BY 4.0 (attribution required) and paid plans grant a private commercial licence. It is credited here to follow the attribution terms.',
+      'Under Meshy’s terms of service (section 3.2), free-plan output is made available under CC BY 4.0 with credit to Meshy, while paid-plan customers own their output. The plan used for this model is not recorded, so Meshy is credited to follow the stricter terms.',
     url: 'https://www.meshy.ai',
   },
   {
     name: 'Oswald and Nunito',
-    by: 'Google Fonts',
-    usedFor: 'Typography on this site.',
-    terms: 'Both typefaces are released under the SIL Open Font License.',
-    url: 'https://fonts.google.com',
+    by: 'their open-source authors',
+    usedFor: 'Typography on this site, served from this site as self-hosted latin subsets packaged by Fontsource.',
+    terms: 'Both typefaces are released under the SIL Open Font License 1.1, which permits embedding and redistribution with the licence retained.',
+    url: 'https://fontsource.org',
+    licenceFiles: [
+      { label: 'Oswald licence text', path: 'licenses/oswald-OFL-1.1.txt' },
+      { label: 'Nunito licence text', path: 'licenses/nunito-OFL-1.1.txt' },
+    ],
   },
 ]
 

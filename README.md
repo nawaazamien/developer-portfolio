@@ -69,7 +69,11 @@ Social cards are branded designs, not screenshots. Regenerate them with `npm run
 
 ## Media and credits
 
-Project captures live in `src/assets/projects/<slug>/` as optimised WebP copies, imported by `src/data/projects.ts` so Vite hashes them and applies the base path. Every image carries alt text, an optional caption and its dimensions. Captures of web apps use fictional sample data only, and nothing containing private data, credentials or customer information is committed. Projects without a safe capture show an intentional empty tile. Third-party assets and tools are credited on the `/credits` page (data in `src/data/credits.ts`).
+Project captures live in `src/assets/projects/<slug>/` as optimised WebP copies, imported by `src/data/projects.ts` so Vite hashes them and applies the base path. Every image carries alt text, an optional caption and its dimensions. Captures of web apps use fictional sample data only, and nothing containing private data, credentials or customer information is committed. Projects without a safe capture show an intentional empty tile. Where a project has no safe screenshot (a research system, a command-line pipeline, a backend platform), the media is an explanatory graphic built from real project facts and outputs, never a fabricated UI: `npm run technical-visuals` renders them (Chrome and ffmpeg required) from `scripts/technical-visuals/`, including a render-validation report produced by running the YouTube pipeline's own validator on synthetic test clips. Third-party assets and tools are credited on the `/credits` page (data in `src/data/credits.ts`).
+
+### Performance
+
+The two body fonts (Oswald and Nunito, SIL OFL 1.1) are self-hosted as latin variable subsets via Fontsource, so first paint does not wait on a third-party stylesheet, and the build preloads them and the hero portrait. Case-study content is a separate route chunk. Assets are content-hashed by Vite; note that GitHub Pages serves them with a short (10 minute) cache lifetime.
 
 ## Deployment
 
