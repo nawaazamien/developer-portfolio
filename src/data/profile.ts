@@ -23,8 +23,8 @@ export const profile: Profile = {
   portrait: {
     src: portraitImage,
     alt: 'Nawaaz Amien, wearing a black suit jacket, white shirt and dark tie, outdoors with trees behind him.',
-    width: 400,
-    height: 400,
+    width: 960,
+    height: 960,
   },
   location: 'Cape Town, South Africa',
 }
