@@ -1,6 +1,9 @@
 import type { ProjectSlug } from '../projectSlugs'
 import type { CaseStudy } from '../types'
 import { antiSocialFinance } from './anti-social-finance'
+import { antiSocialPublisher } from './anti-social-publisher'
+import { atlas } from './atlas'
+import { boatJam, marsCleaners } from './systems-games'
 import { antiSocialTrader } from './anti-social-trader'
 import { dominoes } from './dominoes'
 import {
@@ -19,6 +22,8 @@ import { youtubeAutomation } from './youtube-automation'
  * and imported only by the case-study route, so the homepage stays light.
  */
 export const caseStudies: Record<ProjectSlug, CaseStudy> = {
+  atlas,
+  'anti-social-publisher': antiSocialPublisher,
   'anti-social-finance': antiSocialFinance,
   'saas-foundation': saasFoundation,
   'anti-social-trader': antiSocialTrader,
@@ -30,4 +35,6 @@ export const caseStudies: Record<ProjectSlug, CaseStudy> = {
   'tiny-swords-endless-survivor': tinySwordsEndlessSurvivor,
   'castle-hold': castleHold,
   dominoes,
+  'boat-jam': boatJam,
+  'mars-cleaners': marsCleaners,
 }

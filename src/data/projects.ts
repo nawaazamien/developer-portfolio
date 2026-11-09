@@ -1,3 +1,9 @@
+import atlasArchitectureImage from '../assets/projects/atlas/platform-architecture.webp'
+import atlasModulesImage from '../assets/projects/atlas/module-map.webp'
+import boatJamSolverImage from '../assets/projects/boat-jam/solver-pipeline.webp'
+import marsAuthorityImage from '../assets/projects/mars-cleaners/authoritative-simulation.webp'
+import publisherLifecycleImage from '../assets/projects/anti-social-publisher/job-lifecycle.webp'
+import publisherStatusImage from '../assets/projects/anti-social-publisher/platform-status.webp'
 import financeChartOfAccounts from '../assets/projects/anti-social-finance/chart-of-accounts.webp'
 import financeDashboard from '../assets/projects/anti-social-finance/dashboard.webp'
 import financeTransactions from '../assets/projects/anti-social-finance/transactions.webp'
@@ -268,7 +274,103 @@ const saasMatrixImage: ImageAsset = {
   height: 793,
 }
 
+const atlasArchitecture: ImageAsset = {
+  src: atlasArchitectureImage,
+  alt: 'Atlas architecture: a React client calls a FastAPI service, which queries Supabase PostgreSQL as a role that cannot bypass Row Level Security. Each of the three repositories has its own checks in CI. A note says workflows run on demand and the environment is not production.',
+  caption: 'Atlas architecture (diagram, not a screenshot)',
+  fit: 'contain',
+  width: 1200,
+  height: 470,
+}
+
+const atlasModules: ImageAsset = {
+  src: atlasModulesImage,
+  alt: 'Atlas module map in four groups: operations modules, finance modules, platform controls, and a group of items that are not built: subscription billing, platform admin, production hardening and backups.',
+  caption: 'Implemented and not-yet-built modules',
+  width: 1280,
+  height: 570,
+}
+
+const publisherStatus: ImageAsset = {
+  src: publisherStatusImage,
+  alt: 'Integration status table: YouTube is live-validated for private uploads, YouTube scheduling has a live test pending, Instagram Reels had a single live test, Facebook Reels is fake-validated only, and TikTok is research only with no code.',
+  caption: 'What is live, tested against fakes, or pending',
+  width: 1280,
+  height: 510,
+}
+
+const publisherLifecycle: ImageAsset = {
+  src: publisherLifecycleImage,
+  alt: 'Simplified publishing job lifecycle: queued, leased, uploading and published, with branches for retry scheduled, reconciling (check the platform before any retry) and failed permanently.',
+  caption: 'Publishing job lifecycle (simplified)',
+  fit: 'contain',
+  width: 1200,
+  height: 470,
+}
+
+const boatJamSolver: ImageAsset = {
+  src: boatJamSolverImage,
+  alt: 'Boat Jam puzzle tooling pipeline: a generator produces candidate levels, a pure rules engine and an exact breadth-first-search solver check them, and an analyser grades difficulty.',
+  caption: 'Level generation and verification pipeline',
+  fit: 'contain',
+  width: 1200,
+  height: 470,
+}
+
+const marsAuthority: ImageAsset = {
+  src: marsAuthorityImage,
+  alt: 'Mars Cleaners systems flow: interaction commands pass through tool authority into an authoritative dust simulation, with a resource ledger and corruption-tolerant saves.',
+  caption: 'Authoritative simulation architecture',
+  fit: 'contain',
+  width: 1200,
+  height: 470,
+}
+
 export const projects: Project[] = [
+  {
+    id: 'atlas',
+    slug: 'atlas',
+    name: 'Atlas',
+    shortDescription:
+      'A multi-tenant operations and finance platform: jobs, rentals and inventory alongside a general ledger, bank reconciliation and fixed assets, across a React client, a FastAPI service and a PostgreSQL schema with Row Level Security.',
+    longDescription:
+      'Built as three repositories with a typed API contract, a permission registry and a large database test suite. An internal development environment with no production customers.',
+    category: 'saas',
+    projectType: 'Operations and finance platform',
+    status: 'active',
+    featured: true,
+    visibility: 'private',
+    technologies: ['React', 'TypeScript', 'FastAPI', 'Supabase', 'PostgreSQL', 'GitHub Actions'],
+    thumbnail: atlasArchitecture,
+    screenshots: [atlasArchitecture, atlasModules],
+    highlights: [
+      'Operations and accounting on one tenant-safe model: ledger, reconciliation, fixed assets and billing',
+      'Database-enforced tenancy: Row Level Security, a restricted API role and over 160 migrations',
+      'Permission registry on every route, with pytest, Vitest, Playwright and pgTAP suites',
+    ],
+    displayOrder: 1,
+  },
+  {
+    id: 'anti-social-publisher',
+    slug: 'anti-social-publisher',
+    name: 'Anti Social Publisher',
+    shortDescription:
+      'A publishing automation system: OAuth-connected accounts, resumable uploads and an asynchronous worker with leases, retries and reconciliation. YouTube is live-validated for private uploads; other platforms are at earlier stages.',
+    category: 'automation',
+    projectType: 'Publishing automation platform',
+    status: 'active',
+    featured: true,
+    visibility: 'private',
+    technologies: ['React', 'TypeScript', 'FastAPI', 'Python', 'Supabase', 'PostgreSQL', 'GitHub Actions'],
+    thumbnail: publisherLifecycle,
+    screenshots: [publisherStatus, publisherLifecycle],
+    highlights: [
+      'OAuth, resumable uploads and an async worker built so a failed job is reconciled, never blindly retried',
+      'Envelope-encrypted credentials and a database-enforced job state machine',
+      'pgTAP, unit and browser tests, secret scanning and CI against a real Supabase stack',
+    ],
+    displayOrder: 4,
+  },
   {
     id: 'anti-social-finance',
     slug: 'anti-social-finance',
@@ -290,7 +392,7 @@ export const projects: Project[] = [
       'Tenancy, role-based access control and Supabase Row Level Security',
       'FNB CSV/XLSX import, Profit & Loss and Balance Sheet reporting, backed by extensive automated, database and concurrency testing',
     ],
-    displayOrder: 1,
+    displayOrder: 2,
   },
   {
     id: 'saas-foundation',
@@ -315,7 +417,7 @@ export const projects: Project[] = [
       'One typed backend contract implemented by a Supabase adapter and a deterministic in-memory demo adapter',
       'Public source, live demo, CI-gated deployment, and architecture and security documentation',
     ],
-    displayOrder: 2,
+    displayOrder: 3,
   },
   {
     id: 'anti-social-trader',
@@ -329,7 +431,7 @@ export const projects: Project[] = [
     projectType: 'Backtesting & research platform',
     status: 'active',
     statusLabel: 'Active research',
-    featured: true,
+    featured: false,
     visibility: 'private',
     technologies: [
       'Python',
@@ -345,7 +447,7 @@ export const projects: Project[] = [
       'Event-driven backtesting with transaction-cost modelling',
       'Preregistered, reproducible research on a strictly typed Python codebase',
     ],
-    displayOrder: 3,
+    displayOrder: 7,
   },
   {
     id: 'pet-platform',
@@ -368,7 +470,7 @@ export const projects: Project[] = [
       'Pet domain model with visibility, status, media and public listings',
       'Enquiry, customer and application records with notification and email-template architecture',
     ],
-    displayOrder: 4,
+    displayOrder: 5,
   },
   {
     id: 'youtube-automation',
@@ -398,7 +500,7 @@ export const projects: Project[] = [
       'Content-unit detection and candidate clipping with local LLMs',
       'Edit planning for DaVinci Resolve with deterministic render validation',
     ],
-    displayOrder: 6,
+    displayOrder: 8,
   },
   {
     id: 'warmup',
@@ -409,7 +511,7 @@ export const projects: Project[] = [
     category: 'full-stack',
     projectType: 'Tournament management PWA',
     status: 'active',
-    featured: true,
+    featured: false,
     visibility: 'private',
     technologies: ['React', 'TypeScript', 'Vite', 'Dexie', 'PWA'],
     thumbnail: warmupRunnerStrip,
@@ -419,7 +521,7 @@ export const projects: Project[] = [
       'Live tournament runner with standings and session state',
       'Local-first persistence with optional Supabase cloud sync in progress',
     ],
-    displayOrder: 5,
+    displayOrder: 6,
   },
   {
     id: 'tiny-mobile-tower',
@@ -436,7 +538,7 @@ export const projects: Project[] = [
     thumbnail: towerPipelineStrip,
     screenshots: [towerPipelineGrid],
     highlights: [],
-    displayOrder: 7,
+    displayOrder: 10,
   },
   {
     id: 'kingdom-incremental',
@@ -453,7 +555,7 @@ export const projects: Project[] = [
     thumbnail: kingdomScreens,
     screenshots: [kingdomScreens],
     highlights: [],
-    displayOrder: 8,
+    displayOrder: 11,
   },
   {
     id: 'tiny-swords-endless-survivor',
@@ -470,7 +572,7 @@ export const projects: Project[] = [
     thumbnail: endlessThreat,
     screenshots: [endlessThreat, endlessUpgrades, endlessSwarm],
     highlights: [],
-    displayOrder: 9,
+    displayOrder: 12,
   },
   {
     id: 'castle-hold',
@@ -487,7 +589,7 @@ export const projects: Project[] = [
     thumbnail: castleHoldCourtyardImage,
     screenshots: [castleHoldCourtyardImage],
     highlights: [],
-    displayOrder: 10,
+    displayOrder: 13,
   },
   {
     id: 'dominoes',
@@ -512,6 +614,42 @@ export const projects: Project[] = [
     thumbnail: dominoesOverviewImage,
     screenshots: [dominoesOverviewImage, dominoesPipelineImage, dominoesRewardImage, dominoesLocalImage],
     highlights: [],
-    displayOrder: 11,
+    displayOrder: 9,
+  },
+  {
+    id: 'boat-jam',
+    slug: 'boat-jam',
+    name: 'Boat Jam',
+    shortDescription:
+      'A puzzle prototype built around its tooling: a pure rules engine, an exact breadth-first-search solver, a difficulty analyser and a procedural level generator.',
+    category: 'interactive',
+    projectType: 'Puzzle game and solver tooling',
+    status: 'active',
+    statusLabel: 'Prototype',
+    featured: false,
+    visibility: 'private',
+    technologies: ['Godot 4', 'GDScript', 'Algorithms'],
+    thumbnail: boatJamSolver,
+    screenshots: [boatJamSolver],
+    highlights: [],
+    displayOrder: 14,
+  },
+  {
+    id: 'mars-cleaners',
+    slug: 'mars-cleaners',
+    name: 'Mars Cleaners',
+    shortDescription:
+      'An original first-person cleaning game built on an authoritative dust simulation, a physics-tested controller and headless, deterministic tests.',
+    category: 'interactive',
+    projectType: 'Simulation game',
+    status: 'active',
+    statusLabel: 'Early development',
+    featured: false,
+    visibility: 'private',
+    technologies: ['Godot 4', 'GDScript', 'Simulation'],
+    thumbnail: marsAuthority,
+    screenshots: [marsAuthority],
+    highlights: [],
+    displayOrder: 15,
   },
 ]

@@ -89,6 +89,28 @@ export const coreStack: string[] = [
 /** Supporting languages, shown separately so they are not mistaken for the core. */
 export const additionalStack: string[] = ['Python', 'Godot', 'GDScript']
 
+/**
+ * Where technologies have been used. The two lists overlap on purpose
+ * (JavaScript, PostgreSQL) and are not a ranking; they stop a reader assuming
+ * React or TypeScript came from employment, or that PHP came from side projects.
+ */
+export const professionalStack: string[] = [
+  'JavaScript',
+  'Node.js',
+  'PHP',
+  'SQL',
+  'PostgreSQL',
+  'MySQL',
+  'AWS',
+]
+export const productStack: string[] = [
+  'React',
+  'TypeScript',
+  'Supabase',
+  'Vite',
+  'GitHub Actions',
+]
+
 export interface GlanceStat {
   value: string
   label: string

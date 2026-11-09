@@ -12,6 +12,14 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { chromium } from 'playwright-core'
 import { dominoesPipeline, dominoesReward, dominoesStrip } from './technical-visuals/dominoes.mjs'
+import {
+  atlasArchitecture,
+  atlasModules,
+  boatJamSolver,
+  marsDeterminism,
+  publisherLifecycle,
+  publisherStatus,
+} from './technical-visuals/platforms.mjs'
 import { traderFunnel, traderIntegrity, traderLedger } from './technical-visuals/trader.mjs'
 import { youtubeDetail, youtubeStrip, youtubeValidation } from './technical-visuals/youtube.mjs'
 
@@ -27,6 +35,12 @@ const visuals = [
   dominoesStrip,
   dominoesPipeline,
   dominoesReward,
+  atlasArchitecture,
+  atlasModules,
+  publisherStatus,
+  publisherLifecycle,
+  boatJamSolver,
+  marsDeterminism,
 ]
 
 const browser = await chromium.launch({ channel: 'chrome' })

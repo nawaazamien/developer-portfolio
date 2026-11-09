@@ -3,6 +3,8 @@ import {
   STRENGTH_LEVELS,
   additionalStack,
   coreStack,
+  productStack,
+  professionalStack,
   engineeringStrengths,
   type StrengthLevel,
 } from '../data/engineering'
@@ -111,6 +113,12 @@ export function CoreStack() {
             </li>
           ))}
         </ul>
+        <p className="eng__additional">
+          <span>Professional experience:</span> {professionalStack.join(' · ')}
+        </p>
+        <p className="eng__additional">
+          <span>Independent / product work:</span> {productStack.join(' · ')}
+        </p>
         <p className="eng__additional">
           <span>Additional:</span> {additionalStack.join(' · ')}
         </p>

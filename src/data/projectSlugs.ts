@@ -23,6 +23,16 @@ export interface ProjectPage {
 
 export const PROJECT_PAGES = [
   {
+    slug: 'atlas',
+    name: 'Atlas',
+    description:
+      'Multi-tenant operations and finance platform: React, TypeScript, FastAPI and Supabase PostgreSQL with Row Level Security, a ledger, reconciliation and fixed assets.',
+    tagline: 'Operations and finance platform',
+    category: 'SaaS',
+    schemaType: 'SoftwareApplication',
+    applicationCategory: 'BusinessApplication',
+  },
+  {
     slug: 'anti-social-finance',
     name: 'Anti Social Finance',
     description:
@@ -39,6 +49,16 @@ export const PROJECT_PAGES = [
       'Public multi-tenant SaaS reference: React, strict TypeScript and PostgreSQL Row Level Security with role-based access, tested on real PostgreSQL 17.',
     tagline: 'Public multi-tenant SaaS reference',
     category: 'SaaS',
+    schemaType: 'SoftwareApplication',
+    applicationCategory: 'BusinessApplication',
+  },
+  {
+    slug: 'anti-social-publisher',
+    name: 'Anti Social Publisher',
+    description:
+      'Source-driven publishing and automation system: OAuth, resumable uploads, an async worker with retries and encrypted credentials on FastAPI and Supabase.',
+    tagline: 'Publishing automation with OAuth and async jobs',
+    category: 'Automation',
     schemaType: 'SoftwareApplication',
     applicationCategory: 'BusinessApplication',
   },
@@ -127,6 +147,26 @@ export const PROJECT_PAGES = [
       'Server-authoritative multiplayer dominoes platform: deterministic rules engine, redacted real-time protocol, ranked matchmaking and rewards.',
     tagline: 'Server-authoritative multiplayer platform',
     category: 'Full Stack',
+    schemaType: 'SoftwareApplication',
+    applicationCategory: 'GameApplication',
+  },
+  {
+    slug: 'boat-jam',
+    name: 'Boat Jam',
+    description:
+      'Puzzle game in Godot 4 with a pure rules engine, an exact breadth-first-search solver, a difficulty analyser and a procedural level generator.',
+    tagline: 'Puzzle solver and generator · Godot 4',
+    category: 'Interactive / Game',
+    schemaType: 'SoftwareApplication',
+    applicationCategory: 'GameApplication',
+  },
+  {
+    slug: 'mars-cleaners',
+    name: 'Mars Cleaners',
+    description:
+      'Original first-person cleaning game in Godot 4 built on an authoritative dust simulation, a physics-tested controller and deterministic, headless-tested systems.',
+    tagline: 'Authoritative simulation · Godot 4',
+    category: 'Interactive / Game',
     schemaType: 'SoftwareApplication',
     applicationCategory: 'GameApplication',
   },

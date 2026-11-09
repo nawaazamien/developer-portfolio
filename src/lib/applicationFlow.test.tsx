@@ -58,9 +58,9 @@ describe('SaaS Foundation entry', () => {
     expect(projects.filter((p) => p.visibility === 'public')).toHaveLength(1)
   })
 
-  it('is featured second, after Anti Social Finance', () => {
+  it('is featured third, after Atlas and Anti Social Finance', () => {
     const featured = getProjects().filter((p) => p.featured).map((p) => p.slug)
-    expect(featured.slice(0, 2)).toEqual(['anti-social-finance', 'saas-foundation'])
+    expect(featured.slice(0, 3)).toEqual(['atlas', 'anti-social-finance', 'saas-foundation'])
   })
 
   it('does not claim Supabase Auth or PostgREST testing', () => {
