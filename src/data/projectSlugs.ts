@@ -63,6 +63,26 @@ export const PROJECT_PAGES = [
     applicationCategory: 'BusinessApplication',
   },
   {
+    slug: 'ugc-operations-dashboard',
+    name: 'UGC Operations Dashboard',
+    description:
+      'Campaign operations dashboard for creator work: brands, deliverables, usage rights, invoices and tasks on React and Supabase PostgreSQL with Row Level Security.',
+    tagline: 'Campaign operations on React and Supabase',
+    category: 'SaaS',
+    schemaType: 'SoftwareApplication',
+    applicationCategory: 'BusinessApplication',
+  },
+  {
+    slug: 'fluxkit',
+    name: 'Fluxkit',
+    description:
+      'Local-first browser toolkit built with React and TypeScript: tools run on the device with nothing uploaded, enforced by CSP. One working tool, Merge PDF, so far.',
+    tagline: 'Local-first browser file tools',
+    category: 'Full Stack',
+    schemaType: 'SoftwareApplication',
+    applicationCategory: 'UtilitiesApplication',
+  },
+  {
     slug: 'anti-social-trader',
     name: 'Anti Social Trader',
     description:

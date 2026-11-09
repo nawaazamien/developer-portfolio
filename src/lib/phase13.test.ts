@@ -9,7 +9,14 @@ import { skills } from '../data/profile'
 import { getProjects, getRepositoryUrl } from './projects'
 import { getAtAGlance } from '../data/engineering'
 
-const NEW_SLUGS = ['atlas', 'anti-social-publisher', 'boat-jam', 'mars-cleaners']
+const NEW_SLUGS = [
+  'atlas',
+  'anti-social-publisher',
+  'fluxkit',
+  'ugc-operations-dashboard',
+  'boat-jam',
+  'mars-cleaners',
+]
 
 describe('Phase 13 portfolio refresh', () => {
   it('registers every new project with a route, a case study and a card', () => {
@@ -26,7 +33,7 @@ describe('Phase 13 portfolio refresh', () => {
     expect(Object.keys(caseStudies).sort()).toEqual([...PROJECT_SLUGS].sort())
     const stat = getAtAGlance(projects).find((s) => s.label.startsWith('Projects'))
     expect(stat?.value).toBe(String(projects.length))
-    expect(projects.length).toBe(15)
+    expect(projects.length).toBe(17)
   })
 
   it('features the five strongest full-stack projects in order', () => {
@@ -72,6 +79,8 @@ describe('Phase 13 portfolio refresh', () => {
       'src/data/caseStudies/atlas.ts',
       'src/data/caseStudies/anti-social-publisher.ts',
       'src/data/caseStudies/systems-games.ts',
+      'src/data/caseStudies/fluxkit.ts',
+      'src/data/caseStudies/ugc-operations-dashboard.ts',
       'scripts/technical-visuals/platforms.mjs',
     ]
     const forbidden = [
@@ -81,6 +90,7 @@ describe('Phase 13 portfolio refresh', () => {
       /C:\\Users/,
       /Monarch/i,
       /gezpij/i,
+      /bryiviuj/i,
       /w_moonbabe/i,
       /SK4mr1X|rK9PXhz/,
       /github\.com\/(Monarch|nawaazamien\/(atlas|anti-social-publisher|boat-jam|mars))/i,
@@ -106,6 +116,14 @@ describe('Phase 13 portfolio refresh', () => {
     expect(productStack).not.toContain('PHP')
     expect(professionalStack).not.toContain('React')
     expect(professionalStack).not.toContain('TypeScript')
+  })
+
+  it('states Fluxkit and Publisher limits honestly', () => {
+    const fluxkit = caseStudies.fluxkit.scopeNotes!.join(' ')
+    expect(fluxkit).toMatch(/One working tool out of fifty-one/)
+    expect(caseStudies.fluxkit.summary).toMatch(/one working tool/)
+    const publisher = projects.find((p) => p.slug === 'anti-social-publisher')!
+    expect(publisher.screenshots.some((i) => /mocked data/i.test(i.caption ?? ''))).toBe(true)
   })
 
   it('states what is pending in the Atlas and Publisher case studies', () => {

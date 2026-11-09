@@ -1,6 +1,8 @@
 import type { ProjectSlug } from '../projectSlugs'
 import type { CaseStudy } from '../types'
 import { antiSocialFinance } from './anti-social-finance'
+import { fluxkit } from './fluxkit'
+import { ugcOperationsDashboard } from './ugc-operations-dashboard'
 import { antiSocialPublisher } from './anti-social-publisher'
 import { atlas } from './atlas'
 import { boatJam, marsCleaners } from './systems-games'
@@ -35,6 +37,8 @@ export const caseStudies: Record<ProjectSlug, CaseStudy> = {
   'tiny-swords-endless-survivor': tinySwordsEndlessSurvivor,
   'castle-hold': castleHold,
   dominoes,
+  fluxkit,
+  'ugc-operations-dashboard': ugcOperationsDashboard,
   'boat-jam': boatJam,
   'mars-cleaners': marsCleaners,
 }

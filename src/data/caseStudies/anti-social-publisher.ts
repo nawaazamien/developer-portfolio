@@ -95,7 +95,7 @@ export const antiSocialPublisher: CaseStudy = {
   scopeNotes: [
     'This is not a production multi-platform publisher: public YouTube visibility and revoked-consent handling are not yet validated, Instagram is not app-reviewed, and Facebook has not been run live.',
     'TikTok was researched only. No code exists for it, or for any other platform.',
-    'No screenshots are shown because real captures would show connected accounts. The status and lifecycle diagrams are derived from the project’s own documents.',
+    'The screenshots are real captures of the interface running against a mocked API with fictional accounts, so they show the UI rather than live platform results. The status and lifecycle diagrams are derived from the project’s own documents.',
   ],
   lessons: [
     'Writing down what is live, fake-validated and pending kept the project honest and made each next step small enough to supervise.',

@@ -1,3 +1,10 @@
+import fluxkitCatalogueImage from '../assets/projects/fluxkit/tool-catalogue.webp'
+import fluxkitMergeImage from '../assets/projects/fluxkit/merge-pdf-result.webp'
+import fluxkitNotAvailableImage from '../assets/projects/fluxkit/not-available-state.webp'
+import publisherConsoleImage from '../assets/projects/anti-social-publisher/console-overview.webp'
+import publisherPostDetailImage from '../assets/projects/anti-social-publisher/post-detail.webp'
+import publisherPostsImage from '../assets/projects/anti-social-publisher/posts-list.webp'
+import ugcModulesImage from '../assets/projects/ugc-operations-dashboard/module-map.webp'
 import atlasArchitectureImage from '../assets/projects/atlas/platform-architecture.webp'
 import atlasModulesImage from '../assets/projects/atlas/module-map.webp'
 import boatJamSolverImage from '../assets/projects/boat-jam/solver-pipeline.webp'
@@ -326,6 +333,62 @@ const marsAuthority: ImageAsset = {
   height: 470,
 }
 
+const publisherConsole: ImageAsset = {
+  src: publisherConsoleImage,
+  alt: 'Anti Social Publisher console overview for a fictional studio: a platform status panel marking YouTube Shorts as live for private uploads, Instagram Reels as live on a test account only, Facebook Reels as connected but not tested live and TikTok as not built, plus a needs-attention item and a temporary storage meter.',
+  caption: 'Console overview (mocked data, fictional studio)',
+  width: 1280,
+  height: 800,
+}
+
+const publisherPostDetail: ImageAsset = {
+  src: publisherPostDetailImage,
+  alt: 'Anti Social Publisher post detail for a fictional post: the YouTube Shorts destination in a retry scheduled state with a four-stage progress strip, an engine status note that only YouTube publishing is implemented, a video copy card and a latest events list.',
+  caption: 'Post detail with per-destination state (mocked data)',
+  width: 1280,
+  height: 800,
+}
+
+const publisherPosts: ImageAsset = {
+  src: publisherPostsImage,
+  alt: 'Anti Social Publisher posts list with five fictional posts showing published, extracted and failed states, their destination platforms and when each was created, with tabs for needs attention, publishing, ready and done.',
+  caption: 'Posts list (mocked data)',
+  width: 1280,
+  height: 800,
+}
+
+const fluxkitMerge: ImageAsset = {
+  src: fluxkitMergeImage,
+  alt: 'Fluxkit Merge PDF workspace after a merge of three generated sample PDFs: a ready message, six pages, a Download PDF button, a confirmation that the merged file was reopened on this device with six pages, and six page thumbnails.',
+  caption: 'Completed merge of generated sample PDFs',
+  width: 1280,
+  height: 800,
+}
+
+const fluxkitCatalogue: ImageAsset = {
+  src: fluxkitCatalogueImage,
+  alt: 'Fluxkit tool catalogue listing fifty-one tools by category with search and filters. Merge PDF is available; Split PDF, Reorder pages, Rotate PDF and others are marked Not available yet.',
+  caption: 'Tool catalogue with honest availability',
+  width: 1280,
+  height: 800,
+}
+
+const fluxkitNotAvailable: ImageAsset = {
+  src: fluxkitNotAvailableImage,
+  alt: 'Fluxkit Trim video workspace marked Not available yet, with a banner saying files can be previewed but the tool cannot process them yet, above a file drop area that states nothing is uploaded.',
+  caption: 'A tool without an engine says so',
+  width: 1280,
+  height: 800,
+}
+
+const ugcModules: ImageAsset = {
+  src: ugcModulesImage,
+  alt: 'UGC Operations Dashboard module map in four groups: campaign work, money, running the business, and platform, with a note that real email delivery has not been exercised end to end.',
+  caption: 'Modules (diagram, not a screenshot)',
+  width: 1280,
+  height: 560,
+}
+
 export const projects: Project[] = [
   {
     id: 'atlas',
@@ -362,8 +425,8 @@ export const projects: Project[] = [
     featured: true,
     visibility: 'private',
     technologies: ['React', 'TypeScript', 'FastAPI', 'Python', 'Supabase', 'PostgreSQL', 'GitHub Actions'],
-    thumbnail: publisherLifecycle,
-    screenshots: [publisherStatus, publisherLifecycle],
+    thumbnail: publisherConsole,
+    screenshots: [publisherConsole, publisherPostDetail, publisherPosts, publisherStatus, publisherLifecycle],
     highlights: [
       'OAuth, resumable uploads and an async worker built so a failed job is reconciled, never blindly retried',
       'Envelope-encrypted credentials and a database-enforced job state machine',
@@ -418,6 +481,41 @@ export const projects: Project[] = [
       'Public source, live demo, CI-gated deployment, and architecture and security documentation',
     ],
     displayOrder: 3,
+  },
+  {
+    id: 'ugc-operations-dashboard',
+    slug: 'ugc-operations-dashboard',
+    name: 'UGC Operations Dashboard',
+    shortDescription:
+      'A campaign operations dashboard for creator-content work: brands, deliverables, usage rights, invoices, tasks and documents in workspace-isolated React and Supabase.',
+    category: 'saas',
+    projectType: 'Operations SaaS',
+    status: 'active',
+    featured: false,
+    visibility: 'private',
+    technologies: ['React', 'TypeScript', 'Vite', 'Supabase', 'PostgreSQL', 'Tailwind'],
+    thumbnail: ugcModules,
+    screenshots: [ugcModules],
+    highlights: [],
+    displayOrder: 8,
+  },
+  {
+    id: 'fluxkit',
+    slug: 'fluxkit',
+    name: 'Fluxkit',
+    shortDescription:
+      'A local-first browser toolkit where files never leave the device, enforced by a content security policy. A working tool catalogue and workspace, with Merge PDF the first real engine.',
+    category: 'full-stack',
+    projectType: 'Local-first web app',
+    status: 'active',
+    statusLabel: 'Early development',
+    featured: false,
+    visibility: 'private',
+    technologies: ['React', 'TypeScript', 'Vite', 'Tailwind', 'Playwright'],
+    thumbnail: fluxkitMerge,
+    screenshots: [fluxkitMerge, fluxkitCatalogue, fluxkitNotAvailable],
+    highlights: [],
+    displayOrder: 9,
   },
   {
     id: 'anti-social-trader',
@@ -500,7 +598,7 @@ export const projects: Project[] = [
       'Content-unit detection and candidate clipping with local LLMs',
       'Edit planning for DaVinci Resolve with deterministic render validation',
     ],
-    displayOrder: 8,
+    displayOrder: 10,
   },
   {
     id: 'warmup',
@@ -538,7 +636,7 @@ export const projects: Project[] = [
     thumbnail: towerPipelineStrip,
     screenshots: [towerPipelineGrid],
     highlights: [],
-    displayOrder: 10,
+    displayOrder: 12,
   },
   {
     id: 'kingdom-incremental',
@@ -555,7 +653,7 @@ export const projects: Project[] = [
     thumbnail: kingdomScreens,
     screenshots: [kingdomScreens],
     highlights: [],
-    displayOrder: 11,
+    displayOrder: 13,
   },
   {
     id: 'tiny-swords-endless-survivor',
@@ -572,7 +670,7 @@ export const projects: Project[] = [
     thumbnail: endlessThreat,
     screenshots: [endlessThreat, endlessUpgrades, endlessSwarm],
     highlights: [],
-    displayOrder: 12,
+    displayOrder: 14,
   },
   {
     id: 'castle-hold',
@@ -589,7 +687,7 @@ export const projects: Project[] = [
     thumbnail: castleHoldCourtyardImage,
     screenshots: [castleHoldCourtyardImage],
     highlights: [],
-    displayOrder: 13,
+    displayOrder: 15,
   },
   {
     id: 'dominoes',
@@ -614,7 +712,7 @@ export const projects: Project[] = [
     thumbnail: dominoesOverviewImage,
     screenshots: [dominoesOverviewImage, dominoesPipelineImage, dominoesRewardImage, dominoesLocalImage],
     highlights: [],
-    displayOrder: 9,
+    displayOrder: 11,
   },
   {
     id: 'boat-jam',
@@ -632,7 +730,7 @@ export const projects: Project[] = [
     thumbnail: boatJamSolver,
     screenshots: [boatJamSolver],
     highlights: [],
-    displayOrder: 14,
+    displayOrder: 16,
   },
   {
     id: 'mars-cleaners',
@@ -650,6 +748,6 @@ export const projects: Project[] = [
     thumbnail: marsAuthority,
     screenshots: [marsAuthority],
     highlights: [],
-    displayOrder: 15,
+    displayOrder: 17,
   },
 ]

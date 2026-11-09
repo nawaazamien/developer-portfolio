@@ -19,6 +19,7 @@ import {
   marsDeterminism,
   publisherLifecycle,
   publisherStatus,
+  ugcModules,
 } from './technical-visuals/platforms.mjs'
 import { traderFunnel, traderIntegrity, traderLedger } from './technical-visuals/trader.mjs'
 import { youtubeDetail, youtubeStrip, youtubeValidation } from './technical-visuals/youtube.mjs'
@@ -41,6 +42,7 @@ const visuals = [
   publisherLifecycle,
   boatJamSolver,
   marsDeterminism,
+  ugcModules,
 ]
 
 const browser = await chromium.launch({ channel: 'chrome' })

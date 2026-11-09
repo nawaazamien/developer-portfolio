@@ -18,6 +18,8 @@ const assets = join(root, 'src', 'assets', 'projects')
 
 /** Real project images used as an inset, by slug. */
 const INSETS = {
+  'anti-social-publisher': 'anti-social-publisher/console-overview.webp',
+  fluxkit: 'fluxkit/merge-pdf-result.webp',
   'anti-social-finance': 'anti-social-finance/dashboard.webp',
   'saas-foundation': 'saas-foundation/projects-owner.webp',
   'pet-platform': 'pet-platform/dashboard.webp',

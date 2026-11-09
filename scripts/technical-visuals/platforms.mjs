@@ -195,3 +195,27 @@ export const marsDeterminism = {
     </div>`,
   ),
 }
+
+export const ugcModules = {
+  file: 'ugc-operations-dashboard/module-map',
+  slug: 'ugc-operations-dashboard',
+  width: 1280,
+  height: 560,
+  html: page(
+    `.canvas { width: 1280px; height: 560px; }
+     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 26px; }
+     .grp { padding: 18px 20px; }
+     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+     .nn { font: 400 13.5px/1.45 Nunito, sans-serif; color: #a3a3a3; margin-top: 12px; }`,
+    `<div class="canvas">
+      <div class="eyebrow">UGC Operations Dashboard · Modules</div>
+      <h1>Campaign operations on a tenant-safe database</h1>
+      <div class="grid">
+        ${group('Campaign work', ['Brands', 'Campaigns', 'Deliverables', 'Usage rights', 'Closeouts'], 'The core workflow from brief to closeout.')}
+        ${group('Money', ['Invoices', 'Payments'], 'Tracked per campaign and per workspace.')}
+        ${group('Running the business', ['Tasks & deadlines', 'Documents & contracts', 'In-app notifications', 'Analytics dashboard', 'Social accounts', 'Email slots'])}
+        ${group('Platform', ['Authentication', 'Workspaces', 'Row Level Security', 'Scheduled jobs (pg_cron)', 'Signed-URL storage'], 'Real email delivery has not been exercised end to end.')}
+      </div>
+    </div>`,
+  ),
+}
